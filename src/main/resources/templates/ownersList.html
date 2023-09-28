@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners</title>
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <button onclick="goBack()">Back</button>
+    <h1>OWNERS</h1>
+    <a href="/owners/new"> <i class="fa fa-plus"></i>&nbsp;Add owner</a>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="owner : ${owners}">
+            <td th:text="${owner.ime}"></td>
+            <td th:text="${owner.prezime}"></td>
+            <td><a th:href="@{/owners/{id}(id=${owner.id})}" class="btn btn-primary">View Details</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

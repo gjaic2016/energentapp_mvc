@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Countries</title>
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>COUNTRIES</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Country Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="country : ${countries}">
+            <td th:text="${country.id}"></td>
+            <td th:text="${country.name}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <button onclick="goBack()">Back to List</button>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

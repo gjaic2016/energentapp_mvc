@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CountryListDto</title>
+</head>
+<body>
+<h2>COUNTRIES DTO</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+<!--        <th>ID</th>-->
+        <th>Country Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="countri : ${countriesd}">
+<!--        <td th:text="${countri.id}"></td>-->
+        <td th:text="${countri.name}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

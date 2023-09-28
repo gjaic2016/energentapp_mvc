@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Household details</title>
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet" />
+</head>
+<body>
+<div>
+    <button onclick="goBack()">Back</button>
+    <h1>Household Details</h1>
+    <table>
+        <tr>
+            <td>ID:</td>
+            <td th:text="${household.id}"/>
+        </tr>
+        <tr>
+            <td>Address:</td>
+            <td th:text="${household.adresa}"/>
+        </tr>
+    </table>
+    <h2>Owners</h2>
+    <table>
+        <tr th:each="owner : ${household.vlasnik}"  >
+            <td th:text="${owner.ime} + ' ' + ${owner.prezime}"/>
+        </tr>
+    </table>
+</div>
+<a th:href="${'/households/delete/' + household.id}">Obriši</a>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

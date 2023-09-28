@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Novi owner</title>
+    <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>NEW HOUSEHOLD</h1>
+    <button onclick="goBack()">Back to List</button>
+    <form th:action="@{/households/new}" th:object="${household}" method="post">
+        <div>
+            Address:
+            <input type="text" th:field="*{adresa}"/>
+            </br>
+            Owners:
+            <select th:field="*{vlasnik}" multiple>
+                <option th:each="owner : ${owners}"
+                        th:value="${owner.id}"
+                        th:text="${owner.ime} + ' ' + ${owner.prezime}">
+                </option>
+            </select>
+
+            <button type="submit" value="Save">Save</button>
+        </div>
+    </form>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

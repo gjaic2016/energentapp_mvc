@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner details</title>
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet" />
+</head>
+<body>
+<div  th:if="${owner != null}">
+    <button onclick="goBack()">Back to List</button>
+    <h1><a th:text="${owner.ime}"/> <a th:text="${owner.prezime}" /></h1>
+    <table>
+        <tr>
+            <td>First name:</td>
+            <td th:text="${owner.ime}"/>
+        </tr>
+        <tr>
+            <td>Last name:</td>
+            <td th:text="${owner.prezime}"/>
+        </tr>
+        <tr>
+            <td>Date of birth:</td>
+            <td th:text="${owner.datumRodenja}"/>
+        </tr>
+        <tr>
+            <td>OIB:</td>
+            <td th:text="${owner.oib}"/>
+        </tr>
+    </table>
+</div>
+
+<a th:href="${'/owners/delete/' + owner.id}">Obriši</a>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

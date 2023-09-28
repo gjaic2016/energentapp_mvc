@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Households</title>
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <button onclick="goBack()">Back to List</button>
+    <h1>HOUSEHOLDS</h1>
+    <a href="/households/new"> <i class="fa fa-plus"></i>&nbsp;Add household</a>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="household : ${households}">
+            <td th:text="${household.id}"></td>
+            <td th:text="${household.adresa}"></td>
+            <td><a th:href="@{/households/{id}(id=${household.id})}" class="btn btn-primary">View Details</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
