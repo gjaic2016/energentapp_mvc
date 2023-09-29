@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <button onclick="goBack()">Back</button>
+  <h1>SERVICES</h1>
+  </br>
+  <a href="/services/new"> <i class="fa fa-plus"></i>&nbsp;Add service</a>
+  </br>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Service Provider</th>
+      <th>Service Type</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="service : ${services}">
+      <td th:text="${service.id}"></td>
+      <td th:text="${service.serviceProvider.naziv}"></td>
+      <td th:text="${service.serviceType.naziv}"></td>
+      <td th:text="${service.price}"></td>
+      <td><a th:href="@{/services/{id}(id=${service.id})}" class="btn btn-primary">View Details</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+</body>
+</html>

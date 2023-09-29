@@ -1,13 +1,13 @@
 package hr.apisit.energentmvc.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+//@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "SERVICE_PROVIDER")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class ServiceProvider {

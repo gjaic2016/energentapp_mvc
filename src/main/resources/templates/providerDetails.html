@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Provider details</title>
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet" />
+</head>
+<body>
+<div  th:if="${provider != null}">
+    <button onclick="goBack()">Back</button>
+    <h1><a th:text="${provider.naziv}"/></h1>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${provider.naziv}"/>
+        </tr>
+        <tr>
+            <td>Adress:</td>
+            <td th:text="${provider.adresa.getAddress()}"/>
+        </tr>
+        <tr>
+            <td>City:</td>
+            <td th:text="${provider.adresa.getCity().getCity_name()}"/>
+        </tr>
+        <tr>
+            <td>ZIP:</td>
+            <td th:text="${provider.adresa.getCity().getCity_zip()}"/>
+        </tr>
+        <tr>
+            <td>Country:</td>
+            <td th:text="${provider.adresa.getCity().getCountry().getName()}"/>
+        </tr>
+    </table>
+</div>
+<a th:href="${'/serviceproviders/delete/' + provider.id}">Obriši</a>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

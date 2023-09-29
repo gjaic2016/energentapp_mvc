@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Providers</title>
+  <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <button onclick="goBack()">Back</button>
+  <h1>SERVICE PROVIDERS</h1>
+  </br>
+  <a href="/serviceproviders/new"> <i class="fa fa-plus"></i>&nbsp;Add Service Provider</a>
+  </br>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>City name</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="prov : ${providers}">
+
+      <td th:title="${prov.adresa.getAddress()}" class="tooltip">
+        <a th:text="${prov.naziv}"></a>
+      </td>
+
+
+      <td th:title="${prov.adresa.getCity().getCountry().name}" class="tooltip">
+        <a th:text="${prov.adresa.getCity().getCity_name()}"></a>
+      </td>
+
+
+
+<!--      <td th:text="${prov.naziv}"></td>-->
+<!--      <td th:text="${prov.adresa.getCity().getCity_name()}"></td>-->
+      <td><a th:href="@{/serviceproviders/{id}(id=${prov.id})}" class="btn btn-primary">View Details</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+</body>
+</html>

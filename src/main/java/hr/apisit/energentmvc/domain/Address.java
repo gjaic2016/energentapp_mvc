@@ -2,13 +2,13 @@ package hr.apisit.energentmvc.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+//@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "ADDRESS")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Address {
@@ -26,5 +26,5 @@ public class Address {
     @OneToOne(mappedBy = "adresa")
     @JsonIgnore
     private ServiceProvider provider;
-
+//    fetch = FetchType.LAZY
 }

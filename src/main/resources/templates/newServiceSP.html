@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>NEW HOUSEHOLD</h1>
+    <button onclick="goBack()">Back</button>
+    <form th:action="@{/services/new}" th:object="${servicesp}" method="post">
+        <div>
+
+            Service providers:
+            </br>
+            <select th:field="*{serviceProvider}">
+                <option th:each="provider : ${providers}"
+                        th:value="${provider.id}"
+                        th:text="${provider.naziv}">
+                </option>
+            </select>
+            </br>
+
+            Service types:
+            </br>
+            <select th:field="*{serviceType}">
+                <option th:each="type : ${servicetypes}"
+                        th:value="${type.id}"
+                        th:text="${type.naziv}">
+                </option>
+            </select>
+            </br>
+
+            Price:
+            </br>
+            <input type="text" name ="price" th:field="*{price}"/>
+
+            <button type="submit" value="Save">Save</button>
+        </div>
+    </form>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

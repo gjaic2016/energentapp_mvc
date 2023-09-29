@@ -50,6 +50,8 @@ public class HouseholdController {
         return "redirect:/households";
     }
 
+    //TODO update
+
     @GetMapping("/delete/{id}")
     public String deleteHousehold(@PathVariable Integer id) {
         householdService.deleteHousehold(id);

@@ -59,3 +59,18 @@ img.star {
     width:15px;
     height:15px;
 }
+
+/* Style the "Back to List" button */
+button {
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
