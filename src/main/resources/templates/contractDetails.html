@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+</head>
+<body>
+<button onclick="goBack()">Back</button>
+<h1>Contract Details</h1>
+<table>
+    <tr>
+        <td>ID:</td>
+        <td th:text="${contract.id}"/>
+    </tr>
+    <tr>
+        <td>Contract Type:</td>
+        <td th:text="${contract.getContractType().name}"/>
+    </tr>
+    <tr>
+        <td>Household:</td>
+        <td th:text="${contract.getHousehold().adresa}">
+        <td th:each="owner : ${contract.household.vlasnik}">
+            <span th:text="${owner.ime}"></span> <span th:text="${owner.prezime}"></span>
+        </td>
+        </td>
+    </tr>
+    <tr>
+        <td>Service:</td>
+        <td th:text="${contract.getServiceSP().serviceType.naziv}"/>
+    </tr>
+    <tr>
+        <td>Start Date:</td>
+        <td th:text="${contract.getStart_date()}"/>
+    </tr>
+    <tr>
+        <td>End date:</td>
+        <td th:text="${contract.getEnddate()}"/>
+    </tr>
+    <tr>
+        <td>Status:</td>
+        <td th:text="${contract.getStatus()}"
+            th:style="${contract.getStatus().toString().equals('ACTIVE')} ? 'color: green;' : 'color: red;'">
+        </td>
+    </tr>
+</table>
+
+
+<!--<tr th:each="owner : ${contract.household.vlasnik}">-->
+<!--    <td th:text="${owner.ime}"></td>-->
+<!--    <td>Last Name: <span th:text="${owner.prezime}"></span></td>-->
+<!--</tr>-->
+
+
+</div>
+<!--<a th:href="${'/households/delete/' + household.id}">Obriši</a>-->
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

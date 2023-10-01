@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <button onclick="goBack()">Back</button>
+    <h1>CONTRACTS</h1>
+    </br>
+    <a href="/contracts/new"> <i class="fa fa-plus"></i>&nbsp;Add household</a>
+    </br>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Contract type</th>
+            <th>Household</th>
+            <th>Service</th>
+<!--            <th>Start Date</th>-->
+<!--            <th>End date</th>-->
+            <th>Status</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contract : ${contracts}">
+            <td th:text="${contract.id}"></td>
+            <td th:text="${contract.getContractType().name}"></td>
+            <td th:text="${contract.getHousehold().adresa}"></td>
+            <td th:text="${contract.getServiceSP().serviceType.naziv}"></td>
+<!--            <td th:text="${contract.getStart_date()}"></td>-->
+<!--            <td th:text="${contract.getEnddate()}"></td>-->
+
+            <td th:text="${contract.getStatus()}"
+                th:style="${contract.getStatus().toString().equals('ACTIVE')} ? 'color: green;' : 'color: red;'">
+            </td>
+            <td><a th:href="@{/contracts/{id}(id=${contract.id})}" class="btn btn-primary">View Details</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>
