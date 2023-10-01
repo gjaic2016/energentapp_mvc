@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>NEW CONTRACT</h1>
+    <button onclick="goBack()">Back</button>
+    <form th:action="@{/contracts/new}" th:object="${contract}" method="post">
+        <div>
+
+            Contract type:
+            </br>
+            <select th:field="*{contractType}">
+                <option th:each="types : ${contracttypes}"
+                        th:value="${types.id}"
+                        th:text="${types.name}">
+                </option>
+            </select>
+            </br>
+
+            Household:
+            </br>
+            <select th:field="*{household}">
+                <option th:each="house : ${households}"
+                        th:value="${house.id}"
+                        th:text="${house.adresa}">
+                </option>
+            </select>
+            </br>
+
+            Service:
+            </br>
+            <select th:field="*{serviceSP}">
+                <option th:each="service : ${servicesps}"
+                        th:value="${service.id}"
+                        th:text="${service.serviceType.naziv}">
+                </option>
+            </select>
+            </br>
+
+            Start date:
+            <input type="text" th:field="*{start_date}"/>
+            </br>
+
+            End date:
+            <input type="text" th:field="*{enddate}"/>
+            </br>
+
+            <select th:field="*{status}">
+                <option th:each="status : ${statuslist}"
+                        th:value="${status}"
+                        th:text="${status}">
+                </option>
+            </select>
+
+            <button type="submit" value="Save">Save</button>
+        </div>
+    </form>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

@@ -43,16 +43,8 @@
         </td>
     </tr>
 </table>
-
-
-<!--<tr th:each="owner : ${contract.household.vlasnik}">-->
-<!--    <td th:text="${owner.ime}"></td>-->
-<!--    <td>Last Name: <span th:text="${owner.prezime}"></span></td>-->
-<!--</tr>-->
-
-
 </div>
-<!--<a th:href="${'/households/delete/' + household.id}">Obriši</a>-->
+<a th:href="${'/contracts/delete/' + contract.id}">Obriši</a>
 <script>
     function goBack() {
         window.history.back();
