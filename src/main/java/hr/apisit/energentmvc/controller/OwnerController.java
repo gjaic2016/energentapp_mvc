@@ -3,6 +3,7 @@ package hr.apisit.energentmvc.controller;
 import hr.apisit.energentmvc.domain.Owner;
 import hr.apisit.energentmvc.service.OwnerService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @Controller
 @RequestMapping("owners")
 @AllArgsConstructor
+@Slf4j
 public class OwnerController {
 
     private OwnerService ownerService;
@@ -25,8 +27,16 @@ public class OwnerController {
 
     @GetMapping("/{id}")
     public String getOwnerById(Model model, @PathVariable Integer id) {
-        Owner owner = ownerService.getOwnerById(id).get();
-        model.addAttribute("owner", owner);
+//        Owner owner = ownerService.getOwnerById(id).get();
+//        model.addAttribute("owner", owner);
+//        return "ownerDetails";
+        try {
+            Owner owner = ownerService.getOwnerById(id).get();
+            model.addAttribute("owner", owner);
+        }
+        catch(RuntimeException ex) {
+                log.error("Error while getting the film by ID!", ex);
+        }
         return "ownerDetails";
     }
 
@@ -42,6 +52,8 @@ public class OwnerController {
         ownerService.saveOwner(owner);
         return "redirect:/owners";
     }
+
+    //TODO update
 
     @GetMapping("/delete/{id}")
     public String deleteOwner(@PathVariable Integer id) {
