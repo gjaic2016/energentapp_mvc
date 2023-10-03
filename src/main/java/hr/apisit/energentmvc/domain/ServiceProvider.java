@@ -19,7 +19,8 @@ public class ServiceProvider {
     @Column(name = "NAME")
     private String naziv;
 
-    @OneToOne
+//    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "address_id")
     private Address adresa;
 

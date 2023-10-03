@@ -7,7 +7,12 @@
 </head>
 <body>
 <div class="container">
-    <button onclick="goBack()">Back</button>
+    <span>
+        <button type="button">
+            <a th:href="@{/home}">Home</a>
+        </button>
+        <button onclick="goBack()">Back</button>
+    </span>
     <h1>OWNERS</h1>
     </br>
     <a href="/owners/new"> <i class="fa fa-plus"></i>&nbsp;Add owner</a>

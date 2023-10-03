@@ -21,7 +21,7 @@
       <select th:field="*{adresa}">
         <option th:each="address : ${addresses}"
                 th:value="${address.id}"
-                th:text="${address.address}">
+                th:text="${address.getAddressname}">
         </option>
       </select>
 

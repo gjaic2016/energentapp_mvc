@@ -6,7 +6,12 @@
 </head>
 <body>
 <div class="container">
-    <button onclick="goBack()">Back</button>
+    <span>
+        <button type="button">
+            <a th:href="@{/home}">Home</a>
+        </button>
+        <button onclick="goBack()">Back</button>
+    </span>
     <h1>CONTRACTS</h1>
     </br>
     <a href="/contracts/new"> <i class="fa fa-plus"></i>&nbsp;Add contract</a>

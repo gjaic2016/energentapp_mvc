@@ -7,7 +7,12 @@
 </head>
 <body>
 <div class="container">
-  <button onclick="goBack()">Back</button>
+  <span>
+    <button type="button">
+            <a th:href="@{/home}">Home</a>
+    </button>
+    <button onclick="goBack()">Back</button>
+  </span>
   <h1>SERVICES</h1>
   </br>
   <a href="/services/new"> <i class="fa fa-plus"></i>&nbsp;Add service</a>
@@ -18,7 +23,7 @@
       <th>ID</th>
       <th>Service Provider</th>
       <th>Service Type</th>
-      <th>Price</th>
+      <th>Price, EUR</th>
       <th></th>
     </tr>
     </thead>
@@ -27,7 +32,7 @@
       <td th:text="${service.id}"></td>
       <td th:text="${service.serviceProvider.naziv}"></td>
       <td th:text="${service.serviceType.naziv}"></td>
-      <td th:text="${service.price}"></td>
+      <td th:text="${service.price} + ' €'"></td>
       <td><a th:href="@{/services/{id}(id=${service.id})}" class="btn btn-primary">View Details</a></td>
     </tr>
     </tbody>

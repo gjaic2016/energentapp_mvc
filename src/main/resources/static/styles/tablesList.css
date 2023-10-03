@@ -49,7 +49,8 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #333;
+    /*border: 1px solid #333;*/
+    border: none;
 }
 
 th, td {
@@ -92,4 +93,8 @@ button:hover {
     z-index: 999;
     border: none;
     box-shadow: none;
+}
+
+.whiteletterbutton{
+    color: #fff;
 }

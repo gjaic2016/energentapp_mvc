@@ -7,19 +7,26 @@
 </head>
 <body>
 <div class="container">
-    <button onclick="goBack()">Back to List</button>
+    <span>
+        <button type="button">
+            <a th:href="@{/home}">Home</a>
+        </button>
+        <button onclick="goBack()">Back</button>
+    </span>
     <h1>COUNTRIES</h1>
     <table>
         <thead>
         <tr>
             <th>ID</th>
             <th>Country Name</th>
+<!--            <th>Cities</th>-->
         </tr>
         </thead>
         <tbody>
         <tr th:each="country : ${countries}">
             <td th:text="${country.id}"></td>
             <td th:text="${country.name}"></td>
+            <td><a th:href="@{/country/{id}(id=${country.id})}">Cities list</a></td>
         </tr>
         </tbody>
     </table>

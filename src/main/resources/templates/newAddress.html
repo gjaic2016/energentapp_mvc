@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New address</title>
+    <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <h1>NEW ADDRESS</h1>
+  <button onclick="goBack()">Back</button>
+  <form th:action="@{/address/new}" th:object="${newaddress}" method="post">
+    <div>
+      Address name:
+      <input type="text" th:field="*{addressname}"/>
+      </br>
+
+      City:
+      </br>
+      <select th:field="*{city}">
+        <option th:each="onecity : ${cities}"
+                th:value="${onecity.id}"
+                th:text="${onecity.city_name}">
+        </option>
+      </select>
+      </br>
+
+      <button type="submit" value="Save">Save</button>
+    </div>
+  </form>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+</body>
+</html>

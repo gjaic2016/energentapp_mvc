@@ -13,7 +13,7 @@ public interface AddressService {
 
     void saveAddress(Address newAddress);
 
-    Optional<Address> updateAddress(Address updatedAddress, Integer id);
+    Address updateAddress(Address updatedAddress, Integer id);
 
     void deleteAddress(Integer id);
 

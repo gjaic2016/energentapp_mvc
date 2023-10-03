@@ -2,15 +2,15 @@ package hr.apisit.energentmvc.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
+//@Data
+@Getter
+@Setter
 @Entity
 @Table(name="CITY")
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class City {
@@ -34,8 +34,8 @@ public class City {
 //    @JsonBackReference
 //    private Country country;
 
-    @OneToMany
-    @JsonBackReference
+//    @JsonBackReference
+    @OneToMany(mappedBy = "city")
     private List<Address> address;
 
 //    public City(Integer id, String city_zip, String city_name, Country country) {

@@ -1,6 +1,8 @@
 package hr.apisit.energentmvc.service;
 
 import hr.apisit.energentmvc.domain.Address;
+import hr.apisit.energentmvc.domain.Owner;
+import hr.apisit.energentmvc.exception.EntityNotFoundException;
 import hr.apisit.energentmvc.jpaRepository.AddressRepositoryJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,13 +29,29 @@ public class AddressServiceImpl implements AddressService{
 
     @Override
     public void saveAddress(Address newAddress) {
+
         addressRepositoryJpa.save(newAddress);
     }
 
     @Override
-    public Optional<Address> updateAddress(Address updatedAddress, Integer id) {
+    public Address updateAddress(Address addressToUpdate, Integer originalAddressId) {
         //TODO Address update
-        return Optional.empty();
+        Optional<Address> modifiedAddressOptional = addressRepositoryJpa.findById(originalAddressId);
+
+        if(modifiedAddressOptional.isPresent()) {
+            Address modifiedAddress = modifiedAddressOptional.get();
+
+            modifiedAddress.setAddressname(addressToUpdate.getAddressname());
+            modifiedAddress.setCity(addressToUpdate.getCity());
+
+            Address newUpdatedAddress = addressRepositoryJpa.save(modifiedAddress);
+
+            return newUpdatedAddress;
+        }
+        else {
+            throw new EntityNotFoundException("There is no Address object for ID = '" + originalAddressId + "'");
+        }
+
     }
 
     @Override

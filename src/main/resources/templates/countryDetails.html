@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Household details</title>
+  <link th:href="@{/styles/tablesList.css}" rel="stylesheet" />
+</head>
+<body>
+<div>
+  <button onclick="goBack()">Back</button>
+  <h1>Country Details</h1>
+  <h2><a th:text="${country.name}" ></a></h2>
+
+  <h2>Cities</h2>
+  <table>
+    <tr th:if="${country.cities == null or country.cities.isEmpty()}">
+      <td colspan="2">No cities</td>
+    </tr>
+    <tr th:each="city : ${country.cities}"  >
+      <td th:text="${city.city_zip} + ' ' + ${city.city_name}"/>
+    </tr>
+  </table>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+</body>
+</html>

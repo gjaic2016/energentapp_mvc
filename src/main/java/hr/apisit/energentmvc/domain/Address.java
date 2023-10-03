@@ -1,6 +1,5 @@
 package hr.apisit.energentmvc.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,13 +17,14 @@ public class Address {
     private Integer id;
 
     @Column(name="address")
-    private String address;
+    private String addressname;
 
     @ManyToOne
+    @JoinColumn(name = "city_id",referencedColumnName = "id")
     private City city;
 
-    @OneToOne(mappedBy = "adresa")
-    @JsonIgnore
-    private ServiceProvider provider;
-//    fetch = FetchType.LAZY
+//    @OneToOne(mappedBy = "adresa")
+//    @JsonIgnore
+//    private ServiceProvider provider;
+
 }
