@@ -1,10 +1,11 @@
 package hr.apisit.energentmvc.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Set;
 
 @Entity
 @Data
@@ -18,5 +19,11 @@ public class User {
     private String username;
 
     private String password;
+
+    @ManyToMany(fetch= FetchType.EAGER)
+    @JoinTable(name="USER_ROLE",
+            joinColumns=@JoinColumn(name="USERID"),
+            inverseJoinColumns = @JoinColumn(name="ROLEID"))
+    private Set<Role> roles;
 
 }
