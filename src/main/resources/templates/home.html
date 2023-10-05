@@ -1,31 +1,32 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-<!--<html lang="en">-->
 <head>
     <meta charset="UTF-8">
     <title>ENERGENT</title>
-    <link th:href="@{/styles/main.css}" rel="stylesheet" />
+    <link th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body>
-    <div class="nav">
-        <img th:src="@{/styles/redstar.png}" class="star" alt="star">
-        <a th:href="@{/serviceproviders}">Service Providers</a>
-        <a th:href="@{/services}">Services</a>
-        <a th:href="@{/contracts}">Contracts</a>
-        <a th:href="@{/households}">Households</a>
-        <a th:href="@{/owners}">Owners</a>
-        <a th:href="@{/address}">Address</a>
-        <a th:href="@{/country}">Country</a>
-        <a th:href="@{/about}">About</a>
-        <img th:src="@{/styles/redstar.png}" class="star" alt="star">
-        <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right;">Login</a>
-        <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER')" th:href="@{/logout}">Logout</a>
-    </div>
-    <div class="center">
-        <img th:src="@{/styles/redstar.png}" alt="star">
-        <h1>ENERGENT</h1>
-        <h3>Najbolja reprezentativna firma domaćeg uzgoja s dugogodišnjom tradicijom u polju opskrbe
-            kućnih energenata.</h3>
-    </div>
+<div class="nav">
+    <a sec:authorize="isAuthenticated()">Welcome,</a>
+    <a sec:authorize="isAuthenticated()" sec:authentication="name" style="color:red; text-transform: uppercase;"></a>
+    <img th:src="@{/styles/redstar.png}" class="star" alt="star">
+    <a th:href="@{/serviceproviders}">Service Providers</a>
+    <a th:href="@{/services}">Services</a>
+    <a th:href="@{/contracts}">Contracts</a>
+    <a th:href="@{/households}">Households</a>
+    <a th:href="@{/owners}">Owners</a>
+    <a th:href="@{/address}">Address</a>
+    <a th:href="@{/country}">Country</a>
+    <a th:href="@{/about}">About</a>
+    <img th:src="@{/styles/redstar.png}" class="star" alt="star">
+    <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right;">Login</a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER')" th:href="@{/logout}">Logout</a>
+</div>
+<div class="center">
+    <img th:src="@{/styles/redstar.png}" alt="star">
+    <h1>ENERGENT</h1>
+    <h3>Najbolja reprezentativna firma domaćeg uzgoja s dugogodišnjom tradicijom u polju opskrbe
+        kućnih energenata.</h3>
+</div>
 </body>
 </html>
