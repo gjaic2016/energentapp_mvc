@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Owners</title>
@@ -15,21 +15,21 @@
     </span>
     <h1>OWNERS</h1>
     </br>
-    <a href="/owners/new"> <i class="fa fa-plus"></i>&nbsp;Add owner</a>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/owners/new"> <i class="fa fa-plus"></i>&nbsp;Add owner</a>
     </br>
     <table>
         <thead>
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
-            <th></th>
+            <th sec:authorize="hasAuthority('ADMIN')"></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="owner : ${owners}">
             <td th:text="${owner.ime}"></td>
             <td th:text="${owner.prezime}"></td>
-            <td><a th:href="@{/owners/{id}(id=${owner.id})}" class="btn btn-primary">View Details</a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/owners/{id}(id=${owner.id})}" class="btn btn-primary">View Details</a></td>
         </tr>
         </tbody>
     </table>

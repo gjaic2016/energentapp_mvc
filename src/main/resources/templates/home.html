@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<!--<html lang="en">-->
 <head>
     <meta charset="UTF-8">
     <title>ENERGENT</title>
@@ -17,8 +18,8 @@
         <a th:href="@{/country}">Country</a>
         <a th:href="@{/about}">About</a>
         <img th:src="@{/styles/redstar.png}" class="star" alt="star">
-        <a th:href="@{/login}" style="text-align: right;">Login</a>
-        <a th:href="@{/logout}">Logout</a>
+        <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right;">Login</a>
+        <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER')" th:href="@{/logout}">Logout</a>
     </div>
     <div class="center">
         <img th:src="@{/styles/redstar.png}" alt="star">

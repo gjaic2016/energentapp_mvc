@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Services</title>
   <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
 </head>
 <body>
@@ -15,7 +16,7 @@
   </span>
   <h1>SERVICES</h1>
   </br>
-  <a href="/services/new"> <i class="fa fa-plus"></i>&nbsp;Add service</a>
+  <a sec:authorize="hasAuthority('ADMIN')" href="/services/new"> <i class="fa fa-plus"></i>&nbsp;Add service</a>
   </br>
   <table>
     <thead>
@@ -24,7 +25,7 @@
       <th>Service Provider</th>
       <th>Service Type</th>
       <th>Price, EUR</th>
-      <th></th>
+      <th sec:authorize="hasAuthority('ADMIN')"></th>
     </tr>
     </thead>
     <tbody>
@@ -33,7 +34,7 @@
       <td th:text="${service.serviceProvider.naziv}"></td>
       <td th:text="${service.serviceType.naziv}"></td>
       <td th:text="${service.price} + ' €'"></td>
-      <td><a th:href="@{/services/{id}(id=${service.id})}" class="btn btn-primary">View Details</a></td>
+      <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/services/{id}(id=${service.id})}" class="btn btn-primary">View Details</a></td>
     </tr>
     </tbody>
   </table>

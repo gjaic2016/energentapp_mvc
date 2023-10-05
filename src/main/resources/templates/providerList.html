@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
     <title>Providers</title>
@@ -16,14 +16,14 @@
 
     <h1>SERVICE PROVIDERS</h1>
     </br>
-    <a href="/serviceproviders/new"> <i class="fa fa-plus"></i>&nbsp;Add Service Provider</a>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/serviceproviders/new"> <i class="fa fa-plus"></i>&nbsp;Add Service Provider</a>
     </br>
     <table>
         <thead>
         <tr>
             <th>Name</th>
             <th>City name</th>
-            <th></th>
+            <th sec:authorize="hasAuthority('ADMIN')"></th>
         </tr>
         </thead>
         <tbody>
@@ -33,15 +33,10 @@
                 <a th:text="${prov.naziv}"></a>
             </td>
 
-
             <td th:title="${prov.adresa.getCity().getCountry().name}" class="tooltip">
                 <a th:text="${prov.adresa.getCity().getCity_name()}"></a>
             </td>
-
-
-            <!--      <td th:text="${prov.naziv}"></td>-->
-            <!--      <td th:text="${prov.adresa.getCity().getCity_name()}"></td>-->
-            <td><a th:href="@{/serviceproviders/{id}(id=${prov.id})}" class="btn btn-primary">View Details</a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/serviceproviders/{id}(id=${prov.id})}" class="btn btn-primary">View Details</a></td>
         </tr>
         </tbody>
     </table>

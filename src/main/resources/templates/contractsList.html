@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <meta charset="UTF-8">
+    <title>Contracts</title>
     <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
 </head>
 <body>
@@ -14,7 +15,7 @@
     </span>
     <h1>CONTRACTS</h1>
     </br>
-    <a href="/contracts/new"> <i class="fa fa-plus"></i>&nbsp;Add contract</a>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/contracts/new"> <i class="fa fa-plus"></i>&nbsp;Add contract</a>
     </br>
     <table>
         <thead>
@@ -26,7 +27,7 @@
 <!--            <th>Start Date</th>-->
 <!--            <th>End date</th>-->
             <th>Status</th>
-            <th></th>
+            <th sec:authorize="hasAuthority('ADMIN')"></th>
         </tr>
         </thead>
         <tbody>
@@ -41,7 +42,7 @@
             <td th:text="${contract.getStatus()}"
                 th:style="${contract.getStatus().toString().equals('ACTIVE')} ? 'color: green;' : 'color: red;'">
             </td>
-            <td><a th:href="@{/contracts/{id}(id=${contract.id})}" class="btn btn-primary">View Details</a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/contracts/{id}(id=${contract.id})}" class="btn btn-primary">View Details</a></td>
         </tr>
         </tbody>
     </table>
