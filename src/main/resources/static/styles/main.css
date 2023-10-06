@@ -81,7 +81,12 @@ img.star {
     height:15px;
 }
 
-/* Style the "Back to List" button */
+img.starlarge{
+    width: 10vw;
+    heigh: 10vh;
+}
+
+
 button {
     margin-top: 20px;
     background-color: #007bff;

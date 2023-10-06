@@ -56,10 +56,4 @@ public class OwnerServiceImpl implements OwnerService{
         ownerRepositoryJpa.deleteById(id);
     }
 
-    //    @Override
-//    public void deleteOwner(Owner owner) {
-//        ownerRepositoryJpa.delete(owner);
-//    }
-
-
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <!--<html xmlns:th="http://www.thymeleaf.org">-->
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,10 @@
 <div class="container">
     <p th:if="${loginError}" class="error">Wrong user or password</p>
     <br/>
-    <a th:href="@{/home}">Home</a>
+    <button type="button">
+        <a th:href="@{/home}">Home</a>
+
+    </button>
     <br/>
     <h1>LOGIN</h1>
     <br/>
@@ -23,7 +26,10 @@
         <br/>
         <input type="password" id="password" name="password"/>
         <br/>
-        <input type="submit" value="Log in"/>
+        <button type="button">
+            <input type="submit" value="Log in"/>
+
+        </button>
     </form>
 </div>
 </body>

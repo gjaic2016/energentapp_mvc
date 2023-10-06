@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="nav">
-    <a sec:authorize="isAuthenticated()">Welcome,</a>
+<!--    <a sec:authorize="isAuthenticated()">Welcome,</a>-->
     <a sec:authorize="isAuthenticated()" sec:authentication="name" style="color:red; text-transform: uppercase;"></a>
     <img th:src="@{/styles/redstar.png}" class="star" alt="star">
     <a th:href="@{/serviceproviders}">Service Providers</a>
@@ -23,7 +23,7 @@
     <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER')" th:href="@{/logout}">Logout</a>
 </div>
 <div class="center">
-    <img th:src="@{/styles/redstar.png}" alt="star">
+    <img th:src="@{/styles/redstar.png}" class="starlarge" alt="star">
     <h1>ENERGENT</h1>
     <h3>Najbolja reprezentativna firma domaćeg uzgoja s dugogodišnjom tradicijom u polju opskrbe
         kućnih energenata.</h3>

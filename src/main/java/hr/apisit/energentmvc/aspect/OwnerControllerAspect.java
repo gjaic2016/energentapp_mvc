@@ -14,13 +14,13 @@ public class OwnerControllerAspect {
 
     @Before(value = "execution(* hr.apisit.energentmvc.service.OwnerService.*(..)) && args(id)")
     public void beforeGettingFilmById(JoinPoint joinPoint, Integer id) {
-        log.trace("Before method:" + joinPoint.getSignature());
-        log.trace("Getting the film by id " + id);
+        log.trace("Before owner method:" + joinPoint.getSignature());
+        log.trace("Getting owner by id " + id);
     }
 
     @After(value = "execution(* hr.apisit.energentmvc.service.OwnerService.*(..))")
     public void afterAdvice(JoinPoint joinPoint) {
-        log.trace("After method:" + joinPoint.getSignature());
+        log.trace("After owner method:" + joinPoint.getSignature());
     }
 
 
