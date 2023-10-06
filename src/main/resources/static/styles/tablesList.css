@@ -58,6 +58,13 @@ th, td {
     text-align: left;
 }
 
+th {
+    cursor: pointer;
+}
+th:hover{
+    color:red;
+}
+
 /* Style the "Back to List" button */
 button {
     margin-top: 20px;
