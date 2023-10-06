@@ -28,7 +28,7 @@
                 <th>Household</th>
                 <th>Service</th>
                 <th>Status</th>
-                <th sec:authorize="hasAuthority('ADMIN')"></th>
+                <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +40,7 @@
             <td th:text="${contract.getStatus()}"
                 th:style="${contract.getStatus().toString().equals('ACTIVE')} ? 'color: green;' : 'color: red;'">
             </td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/contracts/{id}(id=${contract.id})}"
+            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/contracts/{id}(id=${contract.id})}"
                    class="btn btn-primary">View Details</a></td>
         </tr>
         </tbody>

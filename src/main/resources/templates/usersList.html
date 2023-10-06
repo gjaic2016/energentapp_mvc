@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+  <meta charset="UTF-8">
+  <title>Users</title>
+  <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <span>
+        <button type="button">
+            <a th:href="@{/home}">Home</a>
+        </button>
+        <button onclick="goBack()">Back</button>
+  </span>
+
+  <h1>USERS</h1>
+  </br>
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Username</th>
+      <th>Role</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+
+      <td th:text="${user.id}"></td>
+      <td th:text="${user.username}"></td>
+      <td th:each="role : ${user.roles}">
+        <a th:text="${role.rolename}"></a>
+      </td>
+      <td>
+        <a th:href="${'/users/delete/' + user.id}">Delete</a>
+        <a th:href="@{/users/{id}(id=${user.id})}" >View Details</a>
+      </td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+</body>
+</html>

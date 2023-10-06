@@ -45,6 +45,7 @@ public class SecurityConfig {
                 .requestMatchers(requestMatcherBuilder.pattern("/address/update")).hasAnyAuthority( "ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/address/update/{id}")).hasAnyAuthority( "ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/address/delete/{id}")).hasAnyAuthority( "ADMIN")
+                .requestMatchers(requestMatcherBuilder.pattern("/users")).hasAuthority( "ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/country")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/country/{id}")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/about")).permitAll()
