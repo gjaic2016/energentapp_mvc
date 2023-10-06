@@ -9,7 +9,6 @@
 <div class="nav">
     <a sec:authorize="isAuthenticated()">Hi,</a>
     <a sec:authorize="isAuthenticated()" sec:authentication="name" style="color:red; text-transform: uppercase;"></a>
-
     <a th:href="@{/serviceproviders}">Service Providers</a>
     <a th:href="@{/services}">Services</a>
     <a th:href="@{/contracts}">Contracts</a>
@@ -18,13 +17,13 @@
     <a th:href="@{/address}">Address</a>
     <a th:href="@{/country}">Country</a>
     <a th:href="@{/about}">About</a>
-
-    <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right;">Login</a>
-    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER')" th:href="@{/logout}">Logout</a>
     <a sec:authorize="hasAnyAuthority('ADMIN' )" th:href="@{/users}">Users</a>
+    <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right; margin-left: 4vw;">Login</a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER')" style="text-align: right; margin-left: 4vw;"
+       th:href="@{/logout}">Logout</a>
 </div>
 <div class="center">
-<!--    <img th:src="@{/styles/redstar.png}" class="starlarge" alt="star">-->
+    <img th:src="@{/styles/energy.png}" class="starlarge" alt="star">
     <h1>ENERGENT</h1>
     <h3>Najbolja reprezentativna firma s dugogodišnjom tradicijom u polju opskrbe
         kućnih energenata.</h3>
