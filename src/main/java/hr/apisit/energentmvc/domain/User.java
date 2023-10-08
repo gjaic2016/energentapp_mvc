@@ -14,12 +14,14 @@ import java.util.Set;
 public class User {
 
     @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer id;
 
     private String username;
 
     private String password;
 
+//    @ManyToMany(fetch= FetchType.EAGER)
     @ManyToMany(fetch= FetchType.EAGER)
     @JoinTable(name="USER_ROLE",
             joinColumns=@JoinColumn(name="USERID"),

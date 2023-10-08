@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+    <h1>NEW USER</h1>
+    <button onclick="goBack()">Back</button>
+    <form th:action="@{/users/new}" th:object="${user}" method="post">
+        <div>
+
+            Username:
+            <input type="text" th:field="*{username}"/>
+            </br>
+
+            Password:
+            </br>
+            <input type="text" th:field="*{password}"/>
+
+
+
+            <button type="submit" value="Save">Save</button>
+        </div>
+    </form>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</body>
+</html>

@@ -4,7 +4,6 @@ import hr.apisit.energentmvc.domain.User;
 import hr.apisit.energentmvc.jpaRepository.UserRepositoryJpa;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,7 +26,14 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void saveUser(User newUser) {
+//        User definedUser = new User();
+//        definedUser.setUsername(newUser.getUsername());
+//        definedUser.setPassword(newUser.getPassword());
+//        definedUser.setRoles();
 
+
+
+        userRepositoryJpa.save(newUser);
     }
 
     @Override

@@ -1,9 +1,10 @@
 package hr.apisit.energentmvc.controller;
 
+
 import hr.apisit.energentmvc.domain.Role;
 import hr.apisit.energentmvc.domain.User;
+import hr.apisit.energentmvc.service.RegisterService;
 import hr.apisit.energentmvc.service.RoleService;
-import hr.apisit.energentmvc.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -14,30 +15,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collections;
-import java.util.List;
 
 @Controller
-@RequestMapping("users")
+@RequestMapping("register")
 @AllArgsConstructor
-public class UserController {
+public class RegisterController {
 
-    private UserService userService;
+    private RegisterService registerService;
 
     private PasswordEncoder passwordEncoder;
 
     private RoleService roleService;
 
-    @GetMapping
-    public String getUsersPage(Model model){
-        List<User> usersList = userService.getAllUsers();
-        model.addAttribute("users", usersList);
-        return "usersList";
-    }
-
     @GetMapping("/new")
-    public String getTemplateForNewUser(Model model){
-        model.addAttribute("user", new User());
-        return "newUser";
+    public String getTemplateForNewRegisterUser(Model model){
+        model.addAttribute("registeruser", new User());
+        return "register";
     }
 
     @PostMapping("/new")
@@ -48,14 +41,14 @@ public class UserController {
         Role defaultRole = roleService.getRoleById(1).get();
         user.setRoles(Collections.singleton(defaultRole));
 
-//        Role defaultRole = new Role();
-//        defaultRole.setRolename( "ROLE_USER");
-//        Set<Role> roles = new HashSet<>();
-//        roles.add(defaultRole);
-//        user.setRoles(roles);
 
-        userService.saveUser(user);
-        return "redirect:/users";
+        registerService.saveRegisterUser(user);
+        return "redirect:/register/success"; //redirect to succesful page
+    }
+
+    @GetMapping("/success")
+    public String getTemplateForSuccessRegister(Model model){
+        return "successRegister";
     }
 
 }
