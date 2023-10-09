@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User</title>
+  <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="container">
+  <h1>UPDATE USER</h1>
+  <button onclick="goBack()">Back</button>
+  <form th:action="@{/users/update}" th:object="${user}" method="post">
+    <div>
+      ID:
+      </br>
+      <input type="text" th:field="*{id}" th:value="*{id}" readonly/>
+      </br>
+
+      Enter new username:
+      </br>
+      <input type="text" th:field="*{username}" th:value="*{username}"/>
+      </br>
+
+      Enter new password:
+      </br>
+      <input type="text" th:field="*{password}"/>
+
+      <button type="submit" value="Save">Update</button>
+    </div>
+  </form>
+</div>
+<script>
+  function goBack() {
+    window.history.back();
+  }
+</script>
+</body>
+</html>

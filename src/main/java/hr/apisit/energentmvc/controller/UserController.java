@@ -1,5 +1,7 @@
 package hr.apisit.energentmvc.controller;
 
+import hr.apisit.energentmvc.domain.Address;
+import hr.apisit.energentmvc.domain.City;
 import hr.apisit.energentmvc.domain.Role;
 import hr.apisit.energentmvc.domain.User;
 import hr.apisit.energentmvc.service.RoleService;
@@ -54,4 +56,27 @@ public class UserController {
         userService.deleteUser(id);
         return "redirect:/users";
     }
+
+    //TODO update
+    @GetMapping("/update/{id}")
+    public String getUpdateScreen(Model model, @PathVariable Integer id) {
+        User userToUpdate = userService.getUserById(id).get();
+        userToUpdate.setPassword("");
+        model.addAttribute("user", userToUpdate);
+        return "updateUser";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute User user) {
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+
+        Role defaultRole = roleService.getRoleById(1).get();
+        user.setRoles(Collections.singleton(defaultRole));
+
+        userService.saveUser(user);
+        return "redirect:/users";
+    }
+
+
 }

@@ -21,7 +21,8 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Optional<User> getUserById(Integer id) {
-        return Optional.empty();
+
+        return userRepositoryJpa.findById(id);
     }
 
     @Override
@@ -30,7 +31,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User updateUser(User updatedUser, Integer id) {
+    public User updateUser(User userToUpdate, Integer originalUserId) {
         return null;
     }
 

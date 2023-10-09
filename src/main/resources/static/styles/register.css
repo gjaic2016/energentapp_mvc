@@ -22,33 +22,22 @@ h1 {
     margin-top: 20px;
 }
 
+.container {
+    height: 100vh; /* Adjust the height as needed */
+    overflow: auto; /* Enable vertical scrolling when content overflows */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 /* Center the table horizontally */
 div {
     display: flex;
     flex-direction: column;
-    /*justify-content: center;*/
+    justify-content: center;
     align-items: center;
     height: 70vh; /* Adjust as needed */
-}
-
-/* Style the table */
-table {
-    border-collapse: collapse;
-    background-color: #fff;
-    opacity: 0.9;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    width: 80%; /* Adjust as needed */
-    margin: 20px auto; /* Center horizontally */
-}
-
-table, th, td {
-    border: 1px solid #333;
-}
-
-th, td {
-    padding: 10px;
-    text-align: left;
 }
 
 /* Style the "Back to List" button */
