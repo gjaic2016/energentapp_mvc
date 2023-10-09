@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Collections;
+import java.util.List;
 
 @Controller
 @RequestMapping("register")
@@ -35,6 +36,13 @@ public class RegisterController {
 
     @PostMapping("/new")
     public String saveNewUser(Model model, @ModelAttribute User user) {
+
+
+        if (registerService.usernameExists(user.getUsername())) {
+            model.addAttribute("usernameTaken", true);
+            return "redirect:/register/new";
+        }
+
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
 
@@ -42,9 +50,12 @@ public class RegisterController {
         user.setRoles(Collections.singleton(defaultRole));
 
 
-        registerService.saveRegisterUser(user);
-        return "redirect:/register/success"; //redirect to succesful page
+                registerService.saveRegisterUser(user);
+                return "redirect:/register/success"; //redirect to succesful page
+
     }
+
+
 
     @GetMapping("/success")
     public String getTemplateForSuccessRegister(Model model){

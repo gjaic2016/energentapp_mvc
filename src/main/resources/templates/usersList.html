@@ -36,7 +36,7 @@
         <a th:text="${role.rolename}"></a>
       </td>
       <td>
-        <a th:href="${'/users/delete/' + user.id}">Delete</a>
+        <a th:href="${'/users/delete/' + user.id}"  onclick="return confirmDelete();" th:if="${user.username != 'admin'}">Delete</a>
         <a th:href="@{/users/{id}(id=${user.id})}" >View Details</a>
       </td>
 
@@ -47,6 +47,9 @@
 <script>
   function goBack() {
     window.history.back();
+  }
+  function confirmDelete() {
+    return confirm("Are you sure?");
   }
 </script>
 </body>

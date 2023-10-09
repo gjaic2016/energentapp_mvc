@@ -29,7 +29,8 @@
         <tr th:each="address : ${addresses}">
             <td th:text="${address.addressname}"></td>
             <td th:text="${address.city.city_name}"></td>
-            <td><a  sec:authorize="hasAuthority('ADMIN')" th:href="${'/address/delete/' + address.id}">Delete</a></td>
+            <td><a  sec:authorize="hasAuthority('ADMIN')" th:href="${'/address/delete/' + address.id}"
+                    onclick="return confirmDelete();">Delete</a></td>
             <td><a  sec:authorize="hasAuthority('ADMIN')" th:href="${'/address/update/' + address.id}">Update</a></td>
         </tr>
         </tbody>
@@ -38,6 +39,9 @@
 <script>
     function goBack() {
         window.history.back();
+    }
+    function confirmDelete() {
+        return confirm("Are you sure?");
     }
 </script>
 </body>

@@ -26,13 +26,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void saveUser(User newUser) {
-//        User definedUser = new User();
-//        definedUser.setUsername(newUser.getUsername());
-//        definedUser.setPassword(newUser.getPassword());
-//        definedUser.setRoles();
-
-
-
         userRepositoryJpa.save(newUser);
     }
 
@@ -43,6 +36,6 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void deleteUser(Integer id) {
-
+        userRepositoryJpa.deleteById(id);
     }
 }

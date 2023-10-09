@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Register</title>
@@ -20,6 +20,9 @@
       </br>
       <input type="text" th:field="*{password}"/>
 
+      <div th:if="${usernameTaken}">
+        This username is already taken. Please choose a different one.
+      </div>
       <button type="submit" value="Save">Register</button>
     </div>
   </form>
@@ -28,6 +31,10 @@
   function goBack() {
     window.history.back();
   }
+  // onclick="return confirmRegister();"
+  // function confirmRegister() {
+  //   return alert("This username is already taken. Please choose a different one.");
+  // }
 </script>
 </body>
 </html>

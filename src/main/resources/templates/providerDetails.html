@@ -32,10 +32,13 @@
         </tr>
     </table>
 </div>
-<a th:href="${'/serviceproviders/delete/' + provider.id}">Obriši</a>
+<a th:href="${'/serviceproviders/delete/' + provider.id}" onclick="return confirmDelete();">Delete</a>
 <script>
     function goBack() {
         window.history.back();
+    }
+    function confirmDelete() {
+        return confirm("Are you sure?");
     }
 </script>
 </body>
