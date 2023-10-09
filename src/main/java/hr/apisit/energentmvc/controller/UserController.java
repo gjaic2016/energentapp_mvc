@@ -45,12 +45,6 @@ public class UserController {
         Role defaultRole = roleService.getRoleById(1).get();
         user.setRoles(Collections.singleton(defaultRole));
 
-//        Role defaultRole = new Role();
-//        defaultRole.setRolename( "ROLE_USER");
-//        Set<Role> roles = new HashSet<>();
-//        roles.add(defaultRole);
-//        user.setRoles(roles);
-
         userService.saveUser(user);
         return "redirect:/users";
     }
