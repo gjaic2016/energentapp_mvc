@@ -31,13 +31,14 @@
     <tr th:each="user : ${users}">
 
       <td th:text="${user.id}"></td>
-      <td th:text="${user.username}"></td>
+      <td th:text="${user.username}" th:style="${user.username.toString().equals('admin')} ? 'color: red;' : 'color: black;'"></td>
       <td th:each="role : ${user.roles}">
-        <a th:text="${role.rolename}"></a>
+        <a th:text="${role.rolename}" th:style="${user.username.toString().equals('admin')} ? 'color: red;' : 'color: black;'"></a>
       </td>
       <td>
-        <a th:href="${'/users/delete/' + user.id}"  onclick="return confirmDelete();" th:if="${user.username != 'admin'}">Delete</a>
         <a th:href="@{/users/{id}(id=${user.id})}" >View Details</a>
+        <a th:href="${'/users/update/' + user.id}"  th:if="${user.username != 'admin'}">Update</a>
+        <a th:href="${'/users/delete/' + user.id}"  onclick="return confirmDelete();" th:if="${user.username != 'admin'}">Delete</a>
       </td>
 
     </tr>

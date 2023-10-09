@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class OwnerControllerAspect {
 
     @Before(value = "execution(* hr.apisit.energentmvc.service.OwnerService.*(..)) && args(id)")
-    public void beforeGettingFilmById(JoinPoint joinPoint, Integer id) {
+    public void beforeGettingOwnerById(JoinPoint joinPoint, Integer id) {
         log.trace("Before owner method:" + joinPoint.getSignature());
         log.trace("Getting owner by id " + id);
     }

@@ -47,7 +47,7 @@ public class SecurityConfig {
                 .requestMatchers(requestMatcherBuilder.pattern("/home")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/register")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/register/**")).permitAll()
-//                .requestMatchers(requestMatcherBuilder.pattern(HttpMethod.DELETE, "/**" )).hasAuthority("ADMIN")
+                .requestMatchers(requestMatcherBuilder.pattern(HttpMethod.DELETE, "/users/**" )).hasAuthority("ADMIN")
 //                .requestMatchers(requestMatcherBuilder.pattern(HttpMethod.POST, "/**" )).hasRole("ADMIN")
         ).formLogin((form) -> form
                 .loginPage("/login").permitAll()

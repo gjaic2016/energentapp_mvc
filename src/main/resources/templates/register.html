@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Register</title>
-  <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+  <link th:href="@{/styles/register.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
@@ -20,21 +20,23 @@
       </br>
       <input type="text" th:field="*{password}"/>
 
-      <div th:if="${usernameTaken}">
+      <div th:if="${usernameTaken}" class="error-message">
         This username is already taken. Please choose a different one.
       </div>
+
       <button type="submit" value="Save">Register</button>
     </div>
   </form>
 </div>
-<script>
+<script  th:inline="javascript">
   function goBack() {
     window.history.back();
   }
-  // onclick="return confirmRegister();"
-  // function confirmRegister() {
-  //   return alert("This username is already taken. Please choose a different one.");
-  // }
+  var usernameTaken = [[${usernameTaken}]];
+
+  if (usernameTaken) {
+    alert("This username is already taken. Please choose a different one.");
+  }
 </script>
 </body>
 </html>

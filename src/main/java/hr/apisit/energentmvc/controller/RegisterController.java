@@ -37,11 +37,16 @@ public class RegisterController {
     @PostMapping("/new")
     public String saveNewUser(Model model, @ModelAttribute User user) {
 
-
         if (registerService.usernameExists(user.getUsername())) {
             model.addAttribute("usernameTaken", true);
             return "redirect:/register/new";
         }
+//        String username = user.getUsername();
+//        boolean isUsernameTaken = registerService.usernameExists(username);
+//        if (isUsernameTaken) {
+//            model.addAttribute("usernameTaken", true);
+//            return "register"; // Return to the registration form with an error message
+//        }
 
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
@@ -49,9 +54,8 @@ public class RegisterController {
         Role defaultRole = roleService.getRoleById(1).get();
         user.setRoles(Collections.singleton(defaultRole));
 
-
-                registerService.saveRegisterUser(user);
-                return "redirect:/register/success"; //redirect to succesful page
+        registerService.saveRegisterUser(user);
+        return "redirect:/register/success"; //redirect to succesful page
 
     }
 
