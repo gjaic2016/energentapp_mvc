@@ -10,6 +10,9 @@
   <h1>REGISTER</h1>
   </br>
   <button onclick="goBack()">Back</button>
+  <div th:if="${errorMessage}">
+    <div th:text="${errorMessage}"></div>
+  </div>
   <form th:action="@{/register/new}" th:object="${registeruser}" method="post">
     <div>
 
@@ -21,9 +24,6 @@
       </br>
       <input type="text" th:field="*{password}"/>
 
-      <div th:if="${usernameTaken}" class="error-message">
-        This username is already taken. Please choose a different one.
-      </div>
 
       <button type="submit" value="Save">Register</button>
     </div>
@@ -33,11 +33,12 @@
   function goBack() {
     window.history.back();
   }
-  var usernameTaken = [[${usernameTaken}]];
-
-  if (usernameTaken) {
-    alert("This username is already taken. Please choose a different one.");
-  }
+  // var usernameTaken = [[${usernameTaken}]];
+  //
+  // // Check if 'usernameTaken' is true and display the alert message
+  // if (usernameTaken) {
+  //   document.getElementById("usernameTakenAlert").style.display = "block";
+  // }
 </script>
 </body>
 </html>

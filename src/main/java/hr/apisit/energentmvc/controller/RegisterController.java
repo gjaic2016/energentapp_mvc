@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collections;
 import java.util.List;
@@ -35,10 +36,12 @@ public class RegisterController {
     }
 
     @PostMapping("/new")
-    public String saveNewUser(Model model, @ModelAttribute User user) {
+    public String saveNewUser(Model model, @ModelAttribute User user, RedirectAttributes redirectAttributes) {
 
         if (registerService.usernameExists(user.getUsername())) {
-            model.addAttribute("usernameTaken", true);
+//            errors.rejectValue("onStock", "Book out of stock. Come later...");
+            redirectAttributes.addFlashAttribute("errorMessage", " This username is already taken. Please choose a different one!");
+            model.addAttribute("registeruser", true);
             return "redirect:/register/new";
         }
 //        String username = user.getUsername();
