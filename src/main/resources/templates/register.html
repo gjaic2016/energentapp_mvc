@@ -7,25 +7,29 @@
 </head>
 <body>
 <div class="container">
-  <h1>REGISTER</h1>
+<!--  <h1>REGISTER</h1>-->
+  <h1 th:text="#{label.registration}"></h1>
   </br>
-  <button onclick="goBack()">Back</button>
+  <button onclick="goBack()" th:text="#{button.back}"></button>
   <div th:if="${errorMessage}">
     <div th:text="${errorMessage}"></div>
   </div>
   <form th:action="@{/register/new}" th:object="${registeruser}" method="post">
     <div>
 
-      Username:
+<!--      Username:-->
+      <a th:text="#{label.userName}"/>
       <input type="text" th:field="*{username}"/>
       </br>
 
-      Password:
+<!--      Password:-->
+      <a th:text="#{label.password}"/>
       </br>
       <input type="text" th:field="*{password}"/>
 
 
-      <button type="submit" value="Save">Register</button>
+<!--      <button type="submit" value="Save">Register</button>-->
+      <button type="submit" th:text="#{button.register}"></button>
     </div>
   </form>
 </div>
@@ -33,12 +37,6 @@
   function goBack() {
     window.history.back();
   }
-  // var usernameTaken = [[${usernameTaken}]];
-  //
-  // // Check if 'usernameTaken' is true and display the alert message
-  // if (usernameTaken) {
-  //   document.getElementById("usernameTakenAlert").style.display = "block";
-  // }
 </script>
 </body>
 </html>

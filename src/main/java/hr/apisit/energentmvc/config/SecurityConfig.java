@@ -46,9 +46,12 @@ public class SecurityConfig {
                 .requestMatchers(requestMatcherBuilder.pattern("/about")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/login")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/home")).permitAll()
+                .requestMatchers(requestMatcherBuilder.pattern("/home/**")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/register")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/register/**")).permitAll()
-                .requestMatchers(requestMatcherBuilder.pattern("/actuator/**")).permitAll()
+//                .requestMatchers(requestMatcherBuilder.pattern("/.*lang=.*")).permitAll()
+//                .requestMatchers(requestMatcherBuilder.pattern("/*")).permitAll()
+//                .requestMatchers(requestMatcherBuilder.pattern("/actuator/**")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern(HttpMethod.DELETE, "/users/**" )).hasAuthority("ADMIN")
 //                .requestMatchers(requestMatcherBuilder.pattern(HttpMethod.POST, "/**" )).hasRole("ADMIN")
         ).formLogin((form) -> form

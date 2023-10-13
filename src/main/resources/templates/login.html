@@ -11,29 +11,33 @@
     <p th:if="${loginError}" class="error">Wrong user or password</p>
     <br/>
     <button type="button">
-        <a th:href="@{/home}">Home</a>
+<!--        <a th:href="@{/home}">Home</a>-->
+        <a style="color: white; text-decoration: none;" th:href="@{/home}" th:text="#{label.home}"></a>
 
     </button>
     <br/>
-    <h1>LOGIN</h1>
+    <h1 th:text="#{label.login}"></h1>
     <br/>
     <form th:action="@{/login}" method="post">
-        Username:
+<!--        Username:-->
+        <a th:text="#{label.userName}"/>
         <br/>
         <input type="text" id="username" name="username" autofocus="autofocus"/>
         <br/>
-        Password:
+<!--        Password:-->
+        <a th:text="#{label.password}"/>
         <br/>
         <input type="password" id="password" name="password"/>
         <br/>
-        <button type="button">
-            <input type="submit" value="Log in"/>
-
-        </button>
+<!--        <button type="button">-->
+<!--            <input style="color: white; text-decoration-line: none;" type="submit" value="Log in" />-->
+<!--        </button>-->
+        <button type="submit" th:text="#{button.submit}"  ></button>
     </form>
     <br/>
-    First time visiting?
-    <a th:href="@{/register/new}">Register</a>
+<!--    First time visiting?-->
+    <a th:text="#{label.firsttime}"/>
+    <a th:href="@{/register/new}" th:text="#{label.register}"></a>
 </div>
 </body>
 </html>
