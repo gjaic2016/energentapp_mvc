@@ -6,14 +6,16 @@
     <link th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body>
-    <button onclick="goBack()">Back</button>
+    <button onclick="goBack()" th:text="#{button.back}">Back</button>
 <div class="center">
-    <h2>ABOUT</h2>
+    <h2 th:text="#{label.about}"></h2>
 
     <h4>
-    <p>Founded in the revolutionary year of 1920, "Energent" is a steadfast advocate for the principles of hard work. For over a century, we have unwaveringly upheld the ideals of collective ownership, worker solidarity, and the elimination of class distinctions.</p>
-    <p>At our core, we are committed to dismantling the oppressive forces of capitalism and striving for a society where wealth and resources are shared equitably among all members. Our legacy is one of challenging the status quo, fighting for workers' rights, and championing the marginalized.</p>
-    <p>Throughout our history, we've proudly contributed to the struggles for workers' rights and social justice. Our firm has played a pivotal role in labor movements, advocating for fair wages, safe working conditions, and the abolition of exploitation.</p>
+    <p th:text="#{label.abouttext1}"/>
+    <p th:text="#{label.abouttext2}"/>
+    <p th:text="#{label.abouttext3}"/>
+<!--    <p>At our core, we are committed to dismantling the oppressive forces of capitalism and striving for a society where wealth and resources are shared equitably among all members. Our legacy is one of challenging the status quo, fighting for workers' rights, and championing the marginalized.</p>-->
+<!--    <p>Throughout our history, we've proudly contributed to the struggles for workers' rights and social justice. Our firm has played a pivotal role in labor movements, advocating for fair wages, safe working conditions, and the abolition of exploitation.</p>-->
     </h4>
 </div>
     <script>

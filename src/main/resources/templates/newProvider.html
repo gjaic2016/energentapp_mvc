@@ -7,16 +7,16 @@
 </head>
 <body>
 <div class="container">
-  <h1>NEW SERVICE PROVIDER</h1>
-  <button onclick="goBack()">Back</button>
+  <h1 th:text="#{label.newServiceProvider}"></h1>
+  <button onclick="goBack()" th:text="#{button.back}"></button>
   <form th:action="@{/serviceproviders/new}" th:object="${provider}" method="post">
     <div>
-
-      Name:
+      </br>
+      <p th:text="#{label.name}"></p>
       <input type="text" th:field="*{naziv}"/>
       </br>
 
-      Address:
+      <p th:text="#{label.addaddress}"></p>
       </br>
       <select th:field="*{adresa}">
         <option th:each="address : ${addresses}"
@@ -25,7 +25,7 @@
         </option>
       </select>
 
-      <button type="submit" value="Save">Save</button>
+      <button type="submit" value="Save" th:text="#{label.save}"></button>
     </div>
   </form>
 </div>

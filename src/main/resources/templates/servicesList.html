@@ -10,21 +10,21 @@
 <div class="container">
   <span>
     <button type="button">
-            <a th:href="@{/home}">Home</a>
+            <a style="color: white; text-decoration: none;" th:href="@{/home}" th:text="#{label.home}"></a>
     </button>
-    <button onclick="goBack()">Back</button>
+    <button onclick="goBack()" th:text="#{button.back}"></button>
   </span>
-  <h1>SERVICES</h1>
+  <h1 th:text="#{label.servicescaps}"></h1>
   </br>
-  <a sec:authorize="hasAuthority('ADMIN')" href="/services/new"> <i class="fa fa-plus"></i>&nbsp;Add service</a>
+  <a sec:authorize="hasAuthority('ADMIN')" href="/services/new" th:text="#{label.addservice}"></a>
   </br>
   <table>
     <thead>
     <tr>
-      <th>ID</th>
-      <th>Service Provider</th>
-      <th>Service Type</th>
-      <th>Price, EUR</th>
+      <th th:text="#{label.id}"></th>
+      <th th:text="#{label.serviceProviders}"></th>
+      <th th:text="#{label.serviceType}"></th>
+      <th  th:text="#{label.price} + ', ' + #{label.currenyEUR}"></th>
       <th sec:authorize="hasAuthority('ADMIN')"></th>
     </tr>
     </thead>
@@ -34,7 +34,7 @@
       <td th:text="${service.serviceProvider.naziv}"></td>
       <td th:text="${service.serviceType.naziv}"></td>
       <td th:text="${service.price} + ' €'"></td>
-      <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/services/{id}(id=${service.id})}" class="btn btn-primary">View Details</a></td>
+      <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/services/{id}(id=${service.id})}" th:text="#{label.viewDetails}"></a></td>
     </tr>
     </tbody>
   </table>

@@ -9,20 +9,20 @@
 <div class="container">
   <span>
         <button type="button">
-            <a th:href="@{/home}">Home</a>
+            <a style="color: white; text-decoration: none;" th:href="@{/home}" th:text="#{label.home}"></a>
         </button>
-        <button onclick="goBack()">Back</button>
+        <button onclick="goBack()" th:text="#{button.back}"></button>
   </span>
 
-    <h1>SERVICE PROVIDERS</h1>
+    <h1 th:text="#{label.serviceProvidersCaps}"></h1>
     </br>
-    <a sec:authorize="hasAuthority('ADMIN')" href="/serviceproviders/new"> <i class="fa fa-plus"></i>&nbsp;Add Service Provider</a>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/serviceproviders/new" th:text="#{label.addServiceProvider}"></a>
     </br>
     <table>
         <thead>
         <tr>
-            <th>Name</th>
-            <th>City name</th>
+            <th th:text="#{label.name}"></th>
+            <th th:text="#{label.city}"></th>
             <th sec:authorize="hasAuthority('ADMIN')"></th>
         </tr>
         </thead>
@@ -36,7 +36,7 @@
             <td th:title="${prov.adresa.getCity().getCountry().name}" class="tooltip">
                 <a th:text="${prov.adresa.getCity().getCity_name()}"></a>
             </td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/serviceproviders/{id}(id=${prov.id})}" class="btn btn-primary">View Details</a></td>
+            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/serviceproviders/{id}(id=${prov.id})}" class="btn btn-primary"  th:text="#{label.viewDetails}"></a></td>
         </tr>
         </tbody>
     </table>

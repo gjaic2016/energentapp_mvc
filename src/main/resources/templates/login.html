@@ -11,9 +11,7 @@
     <p th:if="${loginError}" class="error">Wrong user or password</p>
     <br/>
     <button type="button">
-<!--        <a th:href="@{/home}">Home</a>-->
         <a style="color: white; text-decoration: none;" th:href="@{/home}" th:text="#{label.home}"></a>
-
     </button>
     <br/>
     <h1 th:text="#{label.login}"></h1>

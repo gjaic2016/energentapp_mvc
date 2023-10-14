@@ -7,32 +7,32 @@
 </head>
 <body>
 <div  th:if="${provider != null}">
-    <button onclick="goBack()">Back</button>
+    <button onclick="goBack()" th:text="#{button.back}"></button>
     <h1><a th:text="${provider.naziv}"/></h1>
     <table>
         <tr>
-            <td>Name:</td>
+            <td th:text="#{label.name} + ': '"></td>
             <td th:text="${provider.naziv}"/>
         </tr>
         <tr>
-            <td>Adress:</td>
+            <td th:text="#{label.currentaddress} + ': '"></td>
             <td th:text="${provider.adresa.getAddressname()}"/>
         </tr>
         <tr>
-            <td>City:</td>
+            <td th:text="#{label.city} + ': '"></td>
             <td th:text="${provider.adresa.getCity().getCity_name()}"/>
         </tr>
         <tr>
-            <td>ZIP:</td>
+            <td th:text="#{label.zip} + ': '"></td>
             <td th:text="${provider.adresa.getCity().getCity_zip()}"/>
         </tr>
         <tr>
-            <td>Country:</td>
+            <td th:text="#{label.country} + ': '"></td>
             <td th:text="${provider.adresa.getCity().getCountry().getName()}"/>
         </tr>
     </table>
 </div>
-<a th:href="${'/serviceproviders/delete/' + provider.id}" onclick="return confirmDelete();">Delete</a>
+<a th:href="${'/serviceproviders/delete/' + provider.id}" onclick="return confirmDelete();" th:text="#{label.delete}"></a>
 <script>
     function goBack() {
         window.history.back();

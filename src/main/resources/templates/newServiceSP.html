@@ -6,12 +6,12 @@
 </head>
 <body>
 <div class="container">
-    <h1>NEW HOUSEHOLD</h1>
-    <button onclick="goBack()">Back</button>
+    <h1 th:text="#{label.newservicecaps}"></h1>
+    <button onclick="goBack()" th:text="#{button.back}"></button>
     <form th:action="@{/services/new}" th:object="${servicesp}" method="post">
         <div>
 
-            Service providers:
+            <p th:text="#{label.serviceProviders}"></p>
             </br>
             <select th:field="*{serviceProvider}">
                 <option th:each="provider : ${providers}"
@@ -21,7 +21,7 @@
             </select>
             </br>
 
-            Service types:
+            <p th:text="#{label.serviceType}"></p>
             </br>
             <select th:field="*{serviceType}">
                 <option th:each="type : ${servicetypes}"
@@ -31,11 +31,11 @@
             </select>
             </br>
 
-            Price:
+            <p th:text="#{label.price}"></p>
             </br>
             <input type="text" name ="price" th:field="*{price}"/>
 
-            <button type="submit" value="Save">Save</button>
+            <button type="submit" value="Save" th:text="#{label.save}"></button>
         </div>
     </form>
 </div>
