@@ -27,9 +27,7 @@ public class OwnerController {
 
     @GetMapping("/{id}")
     public String getOwnerById(Model model, @PathVariable Integer id) {
-//        Owner owner = ownerService.getOwnerById(id).get();
-//        model.addAttribute("owner", owner);
-//        return "ownerDetails";
+
         try {
             Owner owner = ownerService.getOwnerById(id).get();
             model.addAttribute("owner", owner);

@@ -14,6 +14,7 @@
             var selectedOption = $('#locales').val();
             if (selectedOption != ''){
                 window.location.replace('?lang=' + selectedOption);
+                showSelectedLanguage(selectedOption);
             }
         });
     });
@@ -39,9 +40,9 @@
     <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right; margin-left: 4vw;" th:text="#{label.login}"></a>
     <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER')" style="text-align: right; margin-left: 4vw;"
        th:href="@{/logout}" th:text="#{label.logout}"></a>
-<!--    <span th:text="#{lang.change}"></span>:-->
-    <select style="text-align: right; margin-left: 4vw;" id="locales" onchange="showDropInfo()">
-        <option value=""></option>
+
+    <select style="text-align: right; margin-left: 4vw; width:60px;" id="locales" onchange="showDropInfo()">
+        <option selected th:text="#{lang.language}"></option>
         <option value="en" th:text="#{lang.en}"></option>
         <option value="hr" th:text="#{lang.hr}"></option>
     </select>

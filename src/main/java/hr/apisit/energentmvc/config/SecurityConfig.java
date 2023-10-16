@@ -47,7 +47,7 @@ public class SecurityConfig {
                 .requestMatchers(requestMatcherBuilder.pattern("/login")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/home")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/home/**")).permitAll()
-                .requestMatchers(requestMatcherBuilder.pattern("/register")).permitAll()
+//                .requestMatchers(requestMatcherBuilder.pattern("/register")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/register/**")).permitAll()
 //                .requestMatchers(requestMatcherBuilder.pattern("/.*lang=.*")).permitAll()
 //                .requestMatchers(requestMatcherBuilder.pattern("/*")).permitAll()

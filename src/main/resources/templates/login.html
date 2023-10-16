@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
@@ -22,18 +21,16 @@
         <br/>
         <input type="text" id="username" name="username" autofocus="autofocus"/>
         <br/>
+        <br/>
 <!--        Password:-->
         <a th:text="#{label.password}"/>
         <br/>
         <input type="password" id="password" name="password"/>
         <br/>
-<!--        <button type="button">-->
-<!--            <input style="color: white; text-decoration-line: none;" type="submit" value="Log in" />-->
-<!--        </button>-->
+
         <button type="submit" th:text="#{button.submit}"  ></button>
     </form>
     <br/>
-<!--    First time visiting?-->
     <a th:text="#{label.firsttime}"/>
     <a th:href="@{/register/new}" th:text="#{label.register}"></a>
 </div>

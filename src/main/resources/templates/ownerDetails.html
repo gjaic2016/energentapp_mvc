@@ -28,9 +28,8 @@
         </tr>
     </table>
 </div>
-
 <a th:href="${'/owners/delete/' + owner.id}" onclick="return confirmDelete();">Delete</a>
-<script>
+<script th:inline="javascript">
     function goBack() {
         window.history.back();
     }
