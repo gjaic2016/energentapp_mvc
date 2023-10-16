@@ -6,12 +6,13 @@
 </head>
 <body>
 <div class="container">
-    <h1>NEW CONTRACT</h1>
-    <button onclick="goBack()">Back</button>
+    <h1 th:text="#{label.newContractCaps}"></h1>
+    <button onclick="goBack()" th:text="#{button.back}"></button>
+    </br>
     <form th:action="@{/contracts/new}" th:object="${contract}" method="post">
         <div>
 
-            Contract type:
+            <p th:text="#{label.contractType} + ': '"></p>
             </br>
             <select th:field="*{contractType}">
                 <option th:each="types : ${contracttypes}"
@@ -21,7 +22,7 @@
             </select>
             </br>
 
-            Household:
+            <p th:text="#{label.household} + ': '"></p>
             </br>
             <select th:field="*{household}">
                 <option th:each="house : ${households}"
@@ -31,7 +32,7 @@
             </select>
             </br>
 
-            Service:
+            <p th:text="#{label.service} + ': '"></p>
             </br>
             <select th:field="*{serviceSP}">
                 <option th:each="service : ${servicesps}"
@@ -41,11 +42,11 @@
             </select>
             </br>
 
-            Start date:
+            <p th:text="#{label.startdate} + ': '"></p>
             <input type="text" th:field="*{start_date}"/>
             </br>
 
-            End date:
+            <p th:text="#{label.enddate} + ': '"></p>
             <input type="text" th:field="*{enddate}"/>
             </br>
 
@@ -56,7 +57,15 @@
                 </option>
             </select>
 
-            <button type="submit" value="Save">Save</button>
+<!--            <select th:field="*{status}">-->
+<!--                <option th:each="statusItem : ${statuslist}" th:switch="${statusItem}">-->
+<!--                <option th:case="'ACTIVE'" th:value="${statusItem}" th:text="#{label.activecontract}"></option>-->
+<!--                <option th:case="'INACTIVE'" th:value="${statusItem}" th:text="#{label.inactivecontract}"></option>-->
+
+<!--                </option>-->
+<!--            </select>-->
+
+            <button th:text="#{label.save}" type="submit" value="Save"></button>
         </div>
     </form>
 </div>

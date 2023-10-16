@@ -1,0 +1,25 @@
+<div th:fragment="language" style="padding: 0px;">
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">-->
+<!--    </script>-->
+<!--    <script type="text/javascript">-->
+<!--        $(document).ready(function () {-->
+<!--            $("#locales").change(function () {-->
+<!--                var selectedOption = $('#locales').val();-->
+<!--                if (selectedOption != '') {-->
+<!--                    window.location.replace('?lang=' + selectedOption);-->
+<!--                    showSelectedLanguage(selectedOption);-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+<!--        function showDropInfo() {-->
+<!--            var selectElement = document.getElementById("locales");-->
+<!--            var selectedOptionText = selectElement.options[selectElement.selectedIndex].text;-->
+<!--            document.getElementById("selectedOptionDisplay").textContent = selectedOptionText;-->
+<!--        }-->
+<!--    </script>-->
+    <select style="width:60px;" id="locales" onchange="showDropInfo()">
+        <option selected th:text="#{lang.language}"></option>
+        <option value="en" th:text="#{lang.en}"></option>
+        <option value="hr" th:text="#{lang.hr}"></option>
+    </select>
+</div>

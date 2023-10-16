@@ -41,11 +41,13 @@
     <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER')" style="text-align: right; margin-left: 4vw;"
        th:href="@{/logout}" th:text="#{label.logout}"></a>
 
-    <select style="text-align: right; margin-left: 4vw; width:60px;" id="locales" onchange="showDropInfo()">
+    <select style="margin-left: 4vw; width:60px;" id="locales" onchange="showDropInfo()">
         <option selected th:text="#{lang.language}"></option>
         <option value="en" th:text="#{lang.en}"></option>
         <option value="hr" th:text="#{lang.hr}"></option>
     </select>
+
+<!--    <a style="width: 60px; padding: 0px;" th:insert="/fragments/language :: language"></a>-->
 </div>
 <div class="center">
     <img th:src="@{/styles/energy.png}" class="starlarge" alt="star">

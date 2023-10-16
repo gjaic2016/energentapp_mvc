@@ -12,23 +12,23 @@
 <div class="container">
     <span>
         <button type="button">
-            <a th:href="@{/home}">Home</a>
+           <a style="color: white; text-decoration: none;" th:href="@{/home}" th:text="#{label.home}"></a>
         </button>
-        <button onclick="goBack()">Back</button>
+        <button onclick="goBack()" th:text="#{button.back}"></button>
     </span>
-    <h1>CONTRACTS</h1>
+    <h1 th:text="#{label.contractsCaps}"></h1>
     </br>
-    <a sec:authorize="hasAuthority('ADMIN')" href="/contracts/new"> <i class="fa fa-plus"></i>&nbsp;Add contract</a>
+    <a th:text="#{label.addcontract}" sec:authorize="hasAuthority('ADMIN')" href="/contracts/new"></a>
     </br>
     <table id="contractTable" class="display" style="width:100%">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Contract type</th>
-                <th>Household</th>
-                <th>Service</th>
-                <th>Status</th>
-                <th sec:authorize="hasAuthority('ADMIN')">Actions</th>
+                <th th:text="#{label.id}"></th>
+                <th th:text="#{label.contractType}"></th>
+                <th th:text="#{label.households}"></th>
+                <th th:text="#{label.service}"></th>
+                <th th:text="#{label.status}"></th>
+                <th th:text="#{label.actions}" sec:authorize="hasAuthority('ADMIN')"></th>
             </tr>
         </thead>
         <tbody>
@@ -40,8 +40,9 @@
             <td th:text="${contract.getStatus()}"
                 th:style="${contract.getStatus().toString().equals('ACTIVE')} ? 'color: green;' : 'color: red;'">
             </td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/contracts/{id}(id=${contract.id})}"
-                   class="btn btn-primary">View Details</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')">
+                <a th:text="#{label.viewDetails}" th:href="@{/contracts/{id}(id=${contract.id})}"></a>
+            </td>
         </tr>
         </tbody>
     </table>

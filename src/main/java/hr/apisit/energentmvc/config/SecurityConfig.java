@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .requestMatchers(requestMatcherBuilder.pattern("/services/**")).hasAnyAuthority( "ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/contracts")).hasAnyAuthority("ROLE_USER", "ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/contracts/**")).hasAnyAuthority( "ADMIN")
+                .requestMatchers(requestMatcherBuilder.pattern("/contracts/new/**")).hasAnyAuthority( "ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/households")).hasAnyAuthority("ROLE_USER", "ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/households/**")).hasAnyAuthority( "ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/owners")).hasAnyAuthority("ROLE_USER", "ADMIN")
