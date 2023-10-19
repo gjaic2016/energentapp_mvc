@@ -32,9 +32,9 @@
             <td th:each="role : ${user.roles}">
                 <a th:text="${#messages.msg(role.rolename)}"
                    th:style="${role.rolename == 'ADMIN' ? 'color: red;'
-                        : (role.rolename == 'EDITOR' ? 'color: blue;'
+                        : (role.rolename == 'EDITOR' ? 'color: green;'
                         : (role.rolename == 'MANAGER' ? 'color: green;'
-                        : (role.rolename == 'SUPERUSER' ? 'color: orange;'
+                        : (role.rolename == 'SUPERUSER' ? 'color: red;'
                         : 'color: black;')))}"></a>
             </td>
 <!--            th:style="${role.rolename.toString().equals('ADMIN')} ? 'color: red;' : 'color: black;'"-->

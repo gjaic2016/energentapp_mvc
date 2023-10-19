@@ -39,7 +39,6 @@ public class RegisterController {
     public String saveNewUser(Model model, @ModelAttribute User user, RedirectAttributes redirectAttributes) {
 
         if (registerService.usernameExists(user.getUsername())) {
-//            errors.rejectValue("onStock", "Book out of stock. Come later...");
             redirectAttributes.addFlashAttribute("errorMessage", " This username is already taken. Please choose a different one!");
             model.addAttribute("registeruser", true);
             return "redirect:/register/new";

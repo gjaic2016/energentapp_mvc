@@ -8,14 +8,14 @@
 <body>
 <div class="container">
     <div class="center">
-        <div th:if="${errorMessage}">
-            <div th:text="${errorMessage}"></div>
-        </div>
         <h1 th:text="#{label.registration}"></h1>
         </br>
         <button onclick="goBack()" th:text="#{button.back}"></button>
         <form th:action="@{/register/new}" th:object="${registeruser}" method="post">
             <div>
+        <p th:if="${errorMessage}">
+            <a th:text="${errorMessage}"></a>
+        </p>
                 <!--      Username:-->
                 <a th:text="#{label.userName}"/>
                 <input type="text" th:field="*{username}"/>

@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>User</title>
-  <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>User</title>
+    <link th:href="@{/styles/details.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
     <div class="center">
-      <h1 th:text="#{label.updateUserCaps}"></h1>
-      <button onclick="goBack()" th:text="#{button.back}"></button>
-      <form th:action="@{/users/update}" th:object="${user}" method="post">
-        <div>
-    <!--      <p th:text="#{label.id} + ': '"></p>-->
-    <!--      </br>-->
-    <!--      <input type="text" th:field="*{id}" th:value="*{id}" readonly/>-->
-          </br>
-          <p th:text="#{label.enterNewUsername} + ': '"></p>
-          </br>
-          <input type="text" th:field="*{username}" th:value="*{username}"/>
-          </br>
+        <h1 th:text="#{label.updateUserCaps}"></h1>
+        <button onclick="goBack()" th:text="#{button.back}"></button>
+        <form th:action="@{/users/update}" th:object="${user}" method="post">
+            <div>
+                <p th:text="#{label.id} + ': '"></p>
+                </br>
+                <input type="text" th:field="*{id}" th:value="*{id}" readonly/>
 
-          <p th:text="#{label.enterNewPassword} + ': '"></p>
-          </br>
-          <input type="text" th:field="*{password}"/>
+                </br>
+                <p th:text="#{label.enterNewUsername} + ': '"></p>
+                </br>
+                <input type="text" th:field="*{username}" th:value="*{username}"/>
+                </br>
 
-          <button type="submit" value="Save" th:text="#{label.update}"></button>
-        </div>
-      </form>
+                <p th:text="#{label.enterNewPassword} + ': '"></p>
+                </br>
+                <input type="text" th:field="*{password}"/>
+<!--                type="password" not working -->
+
+
+                </br>
+                Set new role:
+                </br>
+                <select style="height: 50px;" th:field="*{roles}" multiple>
+                    <option th:each="role : ${roles}"
+                            th:value="${role.id}"
+                            th:if="${role.rolename != 'ADMIN'}" th:text="${role.rolename}">
+                    </option>
+                </select>
+
+                <button type="submit" value="Save" th:text="#{label.update}"></button>
+            </div>
+        </form>
     </div>
 </div>
 <script>
-  function goBack() {
-    window.history.back();
-  }
+    function goBack() {
+        window.history.back();
+    }
 </script>
 </body>
 </html>

@@ -27,6 +27,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void saveUser(User newUser) {
+
         userRepositoryJpa.save(newUser);
     }
 

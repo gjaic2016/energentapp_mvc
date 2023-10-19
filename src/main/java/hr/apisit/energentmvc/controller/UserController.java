@@ -61,18 +61,20 @@ public class UserController {
     @GetMapping("/update/{id}")
     public String getUpdateScreen(Model model, @PathVariable Integer id) {
         User userToUpdate = userService.getUserById(id).get();
-        userToUpdate.setPassword("");
+//        userToUpdate.setPassword("");
+
+        List<Role> userRoles = roleService.getAllRoles();
+
         model.addAttribute("user", userToUpdate);
+        model.addAttribute("roles", userRoles);
         return "updateUser";
     }
 
     @PostMapping("/update")
     public String updateUser(@ModelAttribute User user) {
-        String encodedPassword = passwordEncoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
-
-        Role defaultRole = roleService.getRoleById(1).get();
-        user.setRoles(Collections.singleton(defaultRole));
+        //TODO provjera ako pocinje sa "$2a$10" ne koristit encoder, ako ne pocinje onda koristit
+//        String encodedPassword = passwordEncoder.encode(user.getPassword());
+//        user.setPassword(encodedPassword);
 
         userService.saveUser(user);
         return "redirect:/users";
