@@ -19,7 +19,7 @@
     </tr>
     <tr>
       <td th:text="#{label.serviceType} + ': '"></td>
-      <td th:text="${service.serviceType.naziv}"/>
+      <td th:text="${#messages.msg(service.serviceType.naziv)}"/>
     </tr>
     <tr>
       <td th:text="#{label.price} + ': '"></td>

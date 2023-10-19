@@ -34,10 +34,10 @@
         <tbody>
         <tr th:each="contract : ${contracts}">
             <td th:text="${contract.id}"></td>
-            <td th:text="${contract.getContractType().name}"></td>
+            <td th:text="${#messages.msg(contract.getContractType().name)}"></td>
             <td th:text="${contract.getHousehold().adresa}"></td>
-            <td th:text="${contract.getServiceSP().serviceType.naziv}"></td>
-            <td th:text="${contract.getStatus()}"
+            <td th:text="${#messages.msg(contract.getServiceSP().serviceType.naziv)}"></td>
+            <td th:text="${#messages.msg(contract.getStatus())}"
                 th:style="${contract.getStatus().toString().equals('ACTIVE')} ? 'color: green;' : 'color: red;'">
             </td>
             <td sec:authorize="hasAuthority('ADMIN')">

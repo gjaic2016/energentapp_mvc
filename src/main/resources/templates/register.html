@@ -1,42 +1,42 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Register</title>
-  <link th:href="@{/styles/register.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link th:href="@{/styles/register.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
-<!--  <h1>REGISTER</h1>-->
-  <h1 th:text="#{label.registration}"></h1>
-  </br>
-  <button onclick="goBack()" th:text="#{button.back}"></button>
-  <div th:if="${errorMessage}">
-    <div th:text="${errorMessage}"></div>
-  </div>
-  <form th:action="@{/register/new}" th:object="${registeruser}" method="post">
-    <div>
+    <div class="center">
+        <div th:if="${errorMessage}">
+            <div th:text="${errorMessage}"></div>
+        </div>
+        <h1 th:text="#{label.registration}"></h1>
+        </br>
+        <button onclick="goBack()" th:text="#{button.back}"></button>
+        <form th:action="@{/register/new}" th:object="${registeruser}" method="post">
+            <div>
+                <!--      Username:-->
+                <a th:text="#{label.userName}"/>
+                <input type="text" th:field="*{username}"/>
+                </br>
 
-<!--      Username:-->
-      <a th:text="#{label.userName}"/>
-      <input type="text" th:field="*{username}"/>
-      </br>
-
-<!--      Password:-->
-      <a th:text="#{label.password}"/>
-      </br>
-      <input type="text" th:field="*{password}"/>
+                <!--      Password:-->
+                <a th:text="#{label.password}"/>
+                </br>
+                <input type="text" th:field="*{password}"/>
 
 
-<!--      <button type="submit" value="Save">Register</button>-->
-      <button type="submit" th:text="#{button.register}"></button>
+                <!--      <button type="submit" value="Save">Register</button>-->
+                <button type="submit" th:text="#{button.register}"></button>
+            </div>
+        </form>
     </div>
-  </form>
 </div>
-<script  th:inline="javascript">
-  function goBack() {
-    window.history.back();
-  }
+<script th:inline="javascript">
+    function goBack() {
+        window.history.back();
+    }
 </script>
 </body>
 </html>

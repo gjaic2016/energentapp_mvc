@@ -26,12 +26,12 @@
             <select th:field="*{serviceType}">
                 <option th:each="type : ${servicetypes}"
                         th:value="${type.id}"
-                        th:text="${type.naziv}">
+                        th:text="${#messages.msg(type.naziv)}">
                 </option>
             </select>
             </br>
 
-            <p th:text="#{label.price}"></p>
+            <p th:text="#{label.price}+ ',' + #{label.currenyEUR} "></p>
             </br>
             <input type="text" name ="price" th:field="*{price}"/>
 

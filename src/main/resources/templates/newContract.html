@@ -17,7 +17,7 @@
             <select th:field="*{contractType}">
                 <option th:each="types : ${contracttypes}"
                         th:value="${types.id}"
-                        th:text="${types.name}">
+                        th:text="${#messages.msg(types.name)}">
                 </option>
             </select>
             </br>
@@ -37,7 +37,8 @@
             <select th:field="*{serviceSP}">
                 <option th:each="service : ${servicesps}"
                         th:value="${service.id}"
-                        th:text="${service.serviceType.naziv}">
+                        th:text="${#messages.msg(service.serviceType.naziv)}">
+<!--                        th:text="${service.serviceType.naziv}">-->
                 </option>
             </select>
             </br>
@@ -53,7 +54,8 @@
             <select th:field="*{status}">
                 <option th:each="status : ${statuslist}"
                         th:value="${status}"
-                        th:text="${status}">
+                        th:text="${#messages.msg(status)}">
+<!--                        th:text="${#messages.msg(status)}">-->
                 </option>
             </select>
 

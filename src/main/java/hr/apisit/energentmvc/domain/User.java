@@ -17,11 +17,11 @@ public class User {
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Integer id;
 
+//    @Column(nullable = false, unique = true)
     private String username;
 
     private String password;
 
-//    @ManyToMany(fetch= FetchType.EAGER)
     @ManyToMany(fetch= FetchType.EAGER)
     @JoinTable(name="USER_ROLE",
             joinColumns=@JoinColumn(name="USERID"),

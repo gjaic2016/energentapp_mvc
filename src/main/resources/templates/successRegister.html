@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Success</title>
-  <link th:href="@{/styles/details.css}" rel="stylesheet"/>
+  <link th:href="@{/styles/main.css}" rel="stylesheet"/>
 </head>
 <body>
-<div class="container">
-  <div>
-    <h1>Congratulations, succesful registration!</h1>
-    <a th:href="@{/login}">Login</a>
+<div class="center">
 
-  </div>
+    <h1 th:text="#{label.congratulations}"/>
+    <h1 th:text="#{label.succesfulregistration}"/>
+    <a th:href="@{/login}" th:text="#{label.login}"></a>
 
 </div>
 </body>

@@ -32,7 +32,8 @@
     <tr th:each="service : ${services}">
       <td th:text="${service.id}"></td>
       <td th:text="${service.serviceProvider.naziv}"></td>
-      <td th:text="${service.serviceType.naziv}"></td>
+      <td th:text="${#messages.msg(service.serviceType.naziv)}"></td>
+<!--      <td th:text="${service.serviceType.naziv}"></td>-->
       <td th:text="${service.price} + ' €'"></td>
       <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/services/{id}(id=${service.id})}" th:text="#{label.viewDetails}"></a></td>
     </tr>
