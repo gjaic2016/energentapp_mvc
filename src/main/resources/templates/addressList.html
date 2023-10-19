@@ -15,14 +15,14 @@
   </span>
     <h1 th:text="#{label.addressListCaps}"></h1>
     </br>
-    <a sec:authorize="hasAuthority('ADMIN')" href="/address/new" th:text="#{label.addAddress}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER','EDITOR', 'MANAGER', 'SUPERUSER')" href="/address/new" th:text="#{label.addAddress}"></a>
     </br>
     <table>
         <thead>
         <tr>
             <th th:text="#{label.address}"></th>
-            <th th:text="#{label.city}">City</th>
-            <th sec:authorize="hasAuthority('ADMIN')" th:text="#{label.actions}"></th>
+            <th th:text="#{label.city}"></th>
+            <th sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER','EDITOR', 'MANAGER', 'SUPERUSER')" th:text="#{label.actions}"></th>
         </tr>
         </thead>
         <tbody>
@@ -30,9 +30,9 @@
             <td th:text="${address.addressname}"></td>
             <td th:text="${address.city.city_name}"></td>
             <td>
-                <a sec:authorize="hasAuthority('ADMIN')" th:href="${'/address/update/' + address.id}"
+                <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER','EDITOR', 'MANAGER', 'SUPERUSER')" th:href="${'/address/update/' + address.id}"
                    th:text="#{label.update}"></a>
-                <a sec:authorize="hasAuthority('ADMIN')" th:href="${'/address/delete/' + address.id}"
+                <a sec:authorize="hasAnyAuthority('ADMIN','EDITOR', 'MANAGER', 'SUPERUSER')" th:href="${'/address/delete/' + address.id}"
                    onclick="return confirmDelete();" th:text="#{label.delete}"></a>
             </td>
         </tr>

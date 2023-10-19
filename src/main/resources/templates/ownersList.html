@@ -15,21 +15,21 @@
     </span>
     <h1 th:text="#{label.ownerscaps}"></h1>
     </br>
-    <a sec:authorize="hasAuthority('ADMIN')" href="/owners/new" th:text="#{label.addowner}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER','EDITOR', 'MANAGER', 'SUPERUSER')" href="/owners/new" th:text="#{label.addowner}"></a>
     </br>
     <table>
         <thead>
         <tr>
             <th th:text="#{label.firstName}"></th>
             <th th:text="#{label.lastName}"></th>
-            <th sec:authorize="hasAuthority('ADMIN')"></th>
+            <th sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER','EDITOR', 'MANAGER', 'SUPERUSER')"></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="owner : ${owners}">
             <td th:text="${owner.ime}"></td>
             <td th:text="${owner.prezime}"></td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/owners/{id}(id=${owner.id})}"  th:text="#{label.viewDetails}"></a></td>
+            <td><a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER','EDITOR', 'MANAGER', 'SUPERUSER')" th:href="@{/owners/{id}(id=${owner.id})}"  th:text="#{label.viewDetails}"></a></td>
         </tr>
         </tbody>
     </table>

@@ -15,7 +15,7 @@
   </span>
     <h1 th:text="#{label.usersCaps}"></h1>
     </br>
-    <a sec:authorize="hasAuthority('ADMIN')" href="/users/new" th:text="#{label.addUser}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN','EDITOR', 'MANAGER', 'SUPERUSER')" href="/users/new" th:text="#{label.addUser}"></a>
     </br>
     <table>
         <thead>
@@ -31,12 +31,17 @@
             <td th:text="${user.username}"></td>
             <td th:each="role : ${user.roles}">
                 <a th:text="${#messages.msg(role.rolename)}"
-                   th:style="${user.username.toString().equals('admin')} ? 'color: red;' : 'color: black;'"></a>
+                   th:style="${role.rolename == 'ADMIN' ? 'color: red;'
+                        : (role.rolename == 'EDITOR' ? 'color: blue;'
+                        : (role.rolename == 'MANAGER' ? 'color: green;'
+                        : (role.rolename == 'SUPERUSER' ? 'color: orange;'
+                        : 'color: black;')))}"></a>
             </td>
+<!--            th:style="${role.rolename.toString().equals('ADMIN')} ? 'color: red;' : 'color: black;'"-->
             <td>
                 <a th:href="${'/users/update/' + user.id}" th:if="${user.username != 'admin'}"
                    th:text="#{label.update}"></a>
-                <a th:href="${'/users/delete/' + user.id}" onclick="return confirmDelete();"
+                <a sec:authorize="hasAuthority('ADMIN')" th:href="${'/users/delete/' + user.id}" onclick="return confirmDelete();"
                    th:if="${user.username != 'admin'}" th:text="#{label.delete}"></a>
             </td>
         </tr>

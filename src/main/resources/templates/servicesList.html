@@ -16,7 +16,7 @@
   </span>
   <h1 th:text="#{label.servicescaps}"></h1>
   </br>
-  <a sec:authorize="hasAuthority('ADMIN')" href="/services/new" th:text="#{label.addservice}"></a>
+  <a sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR', 'MANAGER', 'SUPERUSER')" href="/services/new" th:text="#{label.addservice}"></a>
   </br>
   <table>
     <thead>
@@ -25,7 +25,7 @@
       <th th:text="#{label.serviceProviders}"></th>
       <th th:text="#{label.serviceType}"></th>
       <th  th:text="#{label.price} + ', ' + #{label.currenyEUR}"></th>
-      <th sec:authorize="hasAuthority('ADMIN')"></th>
+      <th sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR', 'MANAGER', 'SUPERUSER')"></th>
     </tr>
     </thead>
     <tbody>
@@ -35,7 +35,8 @@
       <td th:text="${#messages.msg(service.serviceType.naziv)}"></td>
 <!--      <td th:text="${service.serviceType.naziv}"></td>-->
       <td th:text="${service.price} + ' €'"></td>
-      <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/services/{id}(id=${service.id})}" th:text="#{label.viewDetails}"></a></td>
+      <td><a sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR', 'MANAGER', 'SUPERUSER')"
+             th:href="@{/services/{id}(id=${service.id})}" th:text="#{label.viewDetails}"></a></td>
     </tr>
     </tbody>
   </table>

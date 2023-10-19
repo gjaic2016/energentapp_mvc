@@ -18,7 +18,7 @@
     </span>
     <h1 th:text="#{label.contractsCaps}"></h1>
     </br>
-    <a th:text="#{label.addcontract}" sec:authorize="hasAuthority('ADMIN')" href="/contracts/new"></a>
+    <a th:text="#{label.addcontract}" sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER','EDITOR', 'MANAGER', 'SUPERUSER')" href="/contracts/new"></a>
     </br>
     <table id="contractTable" class="display" style="width:100%">
         <thead>
@@ -28,7 +28,7 @@
                 <th th:text="#{label.households}"></th>
                 <th th:text="#{label.service}"></th>
                 <th th:text="#{label.status}"></th>
-                <th th:text="#{label.actions}" sec:authorize="hasAuthority('ADMIN')"></th>
+                <th th:text="#{label.actions}" sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR', 'MANAGER', 'SUPERUSER')"></th>
             </tr>
         </thead>
         <tbody>
@@ -40,7 +40,7 @@
             <td th:text="${#messages.msg(contract.getStatus())}"
                 th:style="${contract.getStatus().toString().equals('ACTIVE')} ? 'color: green;' : 'color: red;'">
             </td>
-            <td sec:authorize="hasAuthority('ADMIN')">
+            <td sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR', 'MANAGER', 'SUPERUSER')">
                 <a th:text="#{label.viewDetails}" th:href="@{/contracts/{id}(id=${contract.id})}"></a>
             </td>
         </tr>

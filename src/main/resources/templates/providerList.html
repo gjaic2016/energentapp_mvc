@@ -16,14 +16,14 @@
 
     <h1 th:text="#{label.serviceProvidersCaps}"></h1>
     </br>
-    <a sec:authorize="hasAuthority('ADMIN')" href="/serviceproviders/new" th:text="#{label.addServiceProvider}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR', 'MANAGER', 'SUPERUSER')" href="/serviceproviders/new" th:text="#{label.addServiceProvider}"></a>
     </br>
     <table>
         <thead>
         <tr>
             <th th:text="#{label.name}"></th>
             <th th:text="#{label.city}"></th>
-            <th sec:authorize="hasAuthority('ADMIN')"></th>
+            <th sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR', 'MANAGER', 'SUPERUSER')"></th>
         </tr>
         </thead>
         <tbody>
@@ -36,7 +36,9 @@
             <td th:title="${prov.adresa.getCity().getCountry().name}" class="tooltip">
                 <a th:text="${prov.adresa.getCity().getCity_name()}"></a>
             </td>
-            <td><a sec:authorize="hasAuthority('ADMIN')" th:href="@{/serviceproviders/{id}(id=${prov.id})}" class="btn btn-primary"  th:text="#{label.viewDetails}"></a></td>
+            <td><a sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR', 'MANAGER', 'SUPERUSER')"
+                   th:href="@{/serviceproviders/{id}(id=${prov.id})}" class="btn btn-primary"
+                   th:text="#{label.viewDetails}"></a></td>
         </tr>
         </tbody>
     </table>
