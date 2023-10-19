@@ -30,11 +30,11 @@
     <a sec:authorize="isAuthenticated()" sec:authentication="name" style="color:red; text-transform: uppercase;"></a>
     <a th:href="@{/serviceproviders}" th:text="#{label.serviceProviders}"></a>
     <a th:href="@{/services}"  th:text="#{label.services}"></a>
-    <a th:href="@{/contracts}" th:text="#{label.contracts}"></a>
-    <a th:href="@{/households}" th:text="#{label.households}"></a>
-    <a th:href="@{/owners}" th:text="#{label.owners}"></a>
-    <a th:href="@{/address}" th:text="#{label.address}"></a>
-    <a th:href="@{/country}" th:text="#{label.country}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN' )" th:href="@{/contracts}" th:text="#{label.contracts}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN' )" th:href="@{/households}" th:text="#{label.households}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN' )" th:href="@{/owners}" th:text="#{label.owners}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN' )" th:href="@{/address}" th:text="#{label.address}"></a>
+<!--    <a th:href="@{/country}" th:text="#{label.country}"></a>-->
     <a th:href="@{/about}" th:text="#{label.about}"></a>
     <a sec:authorize="hasAnyAuthority('ADMIN' )" th:href="@{/users}" th:text="#{label.users}" ></a>
     <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right; margin-left: 4vw;" th:text="#{label.login}"></a>

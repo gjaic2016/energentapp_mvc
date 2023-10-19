@@ -9,19 +9,19 @@
 <div class="container">
     <span>
         <button type="button">
-            <a th:href="@{/home}">Home</a>
+            <a style="color: white; text-decoration: none;" th:href="@{/home}" th:text="#{label.home}"></a>
         </button>
-        <button onclick="goBack()">Back</button>
+        <button onclick="goBack()" th:text="#{button.back}">Back</button>
     </span>
-    <h1>HOUSEHOLDS</h1>
+    <h1 th:text="#{label.householdscaps}"></h1>
     </br>
-    <a sec:authorize="hasAuthority('ADMIN')" href="/households/new"> <i class="fa fa-plus"></i>&nbsp;Add household</a>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/households/new" th:text="#{label.addhousehold}"></a>
     </br>
     <table>
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Address</th>
+            <th  th:text="#{label.id}"></th>
+            <th  th:text="#{label.currentaddress}"></th>
             <th sec:authorize="hasAuthority('ADMIN')"></th>
         </tr>
         </thead>
@@ -29,7 +29,9 @@
         <tr th:each="household : ${households}">
             <td th:text="${household.id}"></td>
             <td th:text="${household.adresa}"></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/households/{id}(id=${household.id})}" class="btn btn-primary">View Details</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')">
+                <a th:href="@{/households/{id}(id=${household.id})}" th:text="#{label.viewDetails}"></a>
+            </td>
         </tr>
         </tbody>
     </table>

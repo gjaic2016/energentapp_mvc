@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
-  <meta charset="UTF-8">
-  <title>Users</title>
-  <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Users</title>
+    <link th:href="@{/styles/tablesList.css}" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
   <span>
         <button type="button">
-            <a th:href="@{/home}">Home</a>
+             <a style="color: white; text-decoration: none;" th:href="@{/home}" th:text="#{label.home}"></a>
         </button>
-        <button onclick="goBack()">Back</button>
+        <button onclick="goBack()" th:text="#{button.back}">Back</button>
   </span>
-
-  <h1>USERS</h1>
-  </br>
-  <a sec:authorize="hasAuthority('ADMIN')" href="/users/new">Add user</a>
-  </br>
-  <table>
-    <thead>
-    <tr>
-<!--      <th>Id</th>-->
-      <th>Username</th>
-      <th>Role</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="user : ${users}">
-
-<!--      <td th:text="${user.id}"></td>-->
-      <td th:text="${user.username}" th:style="${user.username.toString().equals('admin')} ? 'color: red;' : 'color: black;'"></td>
-      <td th:each="role : ${user.roles}">
-        <a th:text="${role.rolename}" th:style="${user.username.toString().equals('admin')} ? 'color: red;' : 'color: black;'"></a>
-      </td>
-      <td>
-<!--        <a th:href="@{/users/{id}(id=${user.id})}" >View Details</a>-->
-        <a th:href="${'/users/update/' + user.id}"  th:if="${user.username != 'admin'}">Update</a>
-        <a th:href="${'/users/delete/' + user.id}"  onclick="return confirmDelete();" th:if="${user.username != 'admin'}">Delete</a>
-      </td>
-
-    </tr>
-    </tbody>
-  </table>
+    <h1 th:text="#{label.usersCaps}"></h1>
+    </br>
+    <a sec:authorize="hasAuthority('ADMIN')" href="/users/new" th:text="#{label.addUser}"></a>
+    </br>
+    <table>
+        <thead>
+        <tr>
+            <!--      <th>Id</th>-->
+            <th th:text="#{label.userName}"></th>
+            <th th:text="#{label.role}"></th>
+            <th th:text="#{label.actions}"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.username}"></td>
+            <td th:each="role : ${user.roles}">
+                <a th:text="${#messages.msg(role.rolename)}"
+                   th:style="${user.username.toString().equals('admin')} ? 'color: red;' : 'color: black;'"></a>
+            </td>
+            <td>
+                <a th:href="${'/users/update/' + user.id}" th:if="${user.username != 'admin'}"
+                   th:text="#{label.update}"></a>
+                <a th:href="${'/users/delete/' + user.id}" onclick="return confirmDelete();"
+                   th:if="${user.username != 'admin'}" th:text="#{label.delete}"></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 <script>
-  function goBack() {
-    window.history.back();
-  }
-  function confirmDelete() {
-    return confirm("Are you sure?");
-  }
+    function goBack() {
+        window.history.back();
+    }
+
+    function confirmDelete() {
+        return confirm("Are you sure?");
+    }
 </script>
 </body>
 </html>

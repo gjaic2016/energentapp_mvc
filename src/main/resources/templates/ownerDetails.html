@@ -7,28 +7,28 @@
 </head>
 <body>
 <div  th:if="${owner != null}">
-    <button onclick="goBack()">Back</button>
+    <button onclick="goBack()" th:text="#{button.back}"></button>
     <h1><a th:text="${owner.ime}"/> <a th:text="${owner.prezime}" /></h1>
     <table>
         <tr>
-            <td>First name:</td>
+            <td th:text="#{label.firstName} + ':'"></td>
             <td th:text="${owner.ime}"/>
         </tr>
         <tr>
-            <td>Last name:</td>
+            <td th:text="#{label.lastName} + ':'"></td>
             <td th:text="${owner.prezime}"/>
         </tr>
         <tr>
-            <td>Date of birth:</td>
+            <td th:text="#{label.dateOfBirth} + ':'"></td>
             <td th:text="${owner.datumRodenja}"/>
         </tr>
         <tr>
-            <td>OIB:</td>
+            <td th:text="#{label.pinnumber} + ':'"></td>
             <td th:text="${owner.oib}"/>
         </tr>
     </table>
 </div>
-<a th:href="${'/owners/delete/' + owner.id}" onclick="return confirmDelete();">Delete</a>
+<a th:href="${'/owners/delete/' + owner.id}" onclick="return confirmDelete();" th:text="#{label.delete}"></a>
 <script th:inline="javascript">
     function goBack() {
         window.history.back();

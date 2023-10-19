@@ -7,26 +7,26 @@
 </head>
 <body>
 <div>
-    <button onclick="goBack()">Back</button>
-    <h1>Household Details</h1>
+    <button onclick="goBack()" th:text="#{button.back}"></button>
+    <h1 th:text="#{label.householddetails}"></h1>
     <table>
         <tr>
-            <td>ID:</td>
+            <td th:text="#{label.id}"></td>
             <td th:text="${household.id}"/>
         </tr>
         <tr>
-            <td>Address:</td>
+            <td th:text="#{label.currentaddress}">Address:</td>
             <td th:text="${household.adresa}"/>
         </tr>
     </table>
-    <h2>Owners</h2>
+    <h2 th:text="#{label.owners}"></h2>
     <table>
         <tr th:each="owner : ${household.vlasnik}"  >
             <td th:text="${owner.ime} + ' ' + ${owner.prezime}"/>
         </tr>
     </table>
 </div>
-<a th:href="${'/households/delete/' + household.id}" onclick="return confirmDelete();">Delete</a>
+<a th:href="${'/households/delete/' + household.id}" onclick="return confirmDelete();" th:text="#{label.delete}"></a>
 <script>
     function goBack() {
         window.history.back();

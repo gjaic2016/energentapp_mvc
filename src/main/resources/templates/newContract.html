@@ -38,7 +38,6 @@
                 <option th:each="service : ${servicesps}"
                         th:value="${service.id}"
                         th:text="${#messages.msg(service.serviceType.naziv)}">
-<!--                        th:text="${service.serviceType.naziv}">-->
                 </option>
             </select>
             </br>

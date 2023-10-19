@@ -7,27 +7,28 @@
 </head>
 <body>
 <div class="container">
-  <h1>UPDATE USER</h1>
-  <button onclick="goBack()">Back</button>
-  <form th:action="@{/users/update}" th:object="${user}" method="post">
-    <div>
-      ID:
-      </br>
-      <input type="text" th:field="*{id}" th:value="*{id}" readonly/>
-      </br>
+    <div class="center">
+      <h1 th:text="#{label.updateUserCaps}"></h1>
+      <button onclick="goBack()" th:text="#{button.back}"></button>
+      <form th:action="@{/users/update}" th:object="${user}" method="post">
+        <div>
+    <!--      <p th:text="#{label.id} + ': '"></p>-->
+    <!--      </br>-->
+    <!--      <input type="text" th:field="*{id}" th:value="*{id}" readonly/>-->
+          </br>
+          <p th:text="#{label.enterNewUsername} + ': '"></p>
+          </br>
+          <input type="text" th:field="*{username}" th:value="*{username}"/>
+          </br>
 
-      Enter new username:
-      </br>
-      <input type="text" th:field="*{username}" th:value="*{username}"/>
-      </br>
+          <p th:text="#{label.enterNewPassword} + ': '"></p>
+          </br>
+          <input type="text" th:field="*{password}"/>
 
-      Enter new password:
-      </br>
-      <input type="text" th:field="*{password}"/>
-
-      <button type="submit" value="Save">Update</button>
+          <button type="submit" value="Save" th:text="#{label.update}"></button>
+        </div>
+      </form>
     </div>
-  </form>
 </div>
 <script>
   function goBack() {

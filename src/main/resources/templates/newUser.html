@@ -7,23 +7,24 @@
 </head>
 <body>
 <div class="container">
-    <h1>NEW USER</h1>
-    <button onclick="goBack()">Back</button>
-    </br>
-    <form th:action="@{/users/new}" th:object="${user}" method="post">
-        <div>
+    <div class="center">
+        <h1 th:text="#{label.newUserCaps}"></h1>
+        <button onclick="goBack()" th:text="#{button.back}"></button>
+        </br>
+        <form th:action="@{/users/new}" th:object="${user}" method="post">
+            <div>
 
-            Username:
-            <input type="text" th:field="*{username}"/>
-            </br>
+                <p th:text="#{label.userName} + ': '"></p>
+                <input type="text" th:field="*{username}"/>
+                </br>
 
-            Password:
-            </br>
-            <input type="text" th:field="*{password}"/>
+                <p th:text="#{label.password} + ': '"></p>
+                <input type="text" th:field="*{password}"/>
 
-            <button type="submit" value="Save">Save</button>
-        </div>
-    </form>
+                <button type="submit" value="Save" th:text="#{label.save}"></button>
+            </div>
+        </form>
+    </div>
 </div>
 <script>
     function goBack() {

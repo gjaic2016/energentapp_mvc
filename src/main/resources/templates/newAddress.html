@@ -7,15 +7,16 @@
 </head>
 <body>
 <div class="container">
-  <h1>NEW ADDRESS</h1>
-  <button onclick="goBack()">Back</button>
+  <h1 th:text="#{label.newaddresscaps}"></h1>
+  <button onclick="goBack()" th:text="#{button.back}"></button>
+  </br>
   <form th:action="@{/address/new}" th:object="${newaddress}" method="post">
     <div>
-      Address name:
+      <p th:text="#{label.addressname} + ':'"></p>
       <input type="text" th:field="*{addressname}"/>
       </br>
 
-      City:
+      <p th:text="#{label.city} + ':'"></p>
       </br>
       <select th:field="*{city}">
         <option th:each="onecity : ${cities}"
@@ -25,7 +26,7 @@
       </select>
       </br>
 
-      <button type="submit" value="Save">Save</button>
+      <button type="submit" value="Save"  th:text="#{label.save}"></button>
     </div>
   </form>
 </div>
