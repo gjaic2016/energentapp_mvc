@@ -53,7 +53,7 @@ public class SecurityConfig {
                 .requestMatchers(requestMatcherBuilder.pattern("/register/**")).permitAll()
 //                .requestMatchers(requestMatcherBuilder.pattern("/.*lang=.*")).permitAll()
 //                .requestMatchers(requestMatcherBuilder.pattern("/*")).permitAll()
-//                .requestMatchers(requestMatcherBuilder.pattern("/actuator/**")).permitAll()
+                .requestMatchers(requestMatcherBuilder.pattern("/actuator/**")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern(HttpMethod.DELETE, "/users/**" )).hasAuthority("ADMIN")
                 .requestMatchers(requestMatcherBuilder.pattern("/error")).hasAnyAuthority("ROLE_USER", "ADMIN","EDITOR", "MANAGER", "SUPERUSER")
 //                .requestMatchers(requestMatcherBuilder.pattern(HttpMethod.POST, "/**" )).hasRole("ADMIN")
@@ -71,6 +71,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
+
         return new BCryptPasswordEncoder();
     }
 

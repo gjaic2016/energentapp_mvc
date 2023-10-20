@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <title>ENERGENT</title>
     <link th:href="@{/styles/main.css}" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-</script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
         $("#locales").change(function () {
             var selectedOption = $('#locales').val();
-            if (selectedOption != ''){
+            if (selectedOption != '') {
                 window.location.replace('?lang=' + selectedOption);
                 showSelectedLanguage(selectedOption);
             }
         });
     });
+
     function showDropInfo() {
         var selectElement = document.getElementById("locales");
         var selectedOptionText = selectElement.options[selectElement.selectedIndex].text;
@@ -29,16 +29,23 @@
     <a sec:authorize="isAuthenticated()" th:text="#{label.hi} +','"></a>
     <a sec:authorize="isAuthenticated()" sec:authentication="name" style="color:red; text-transform: uppercase;"></a>
     <a th:href="@{/serviceproviders}" th:text="#{label.serviceProviders}"></a>
-    <a th:href="@{/services}"  th:text="#{label.services}"></a>
-    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER')" th:href="@{/contracts}" th:text="#{label.contracts}"></a>
-    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER' )" th:href="@{/households}" th:text="#{label.households}"></a>
-    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER' )" th:href="@{/owners}" th:text="#{label.owners}"></a>
-    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER' )" th:href="@{/address}" th:text="#{label.address}"></a>
-<!--    <a th:href="@{/country}" th:text="#{label.country}"></a>-->
+    <a th:href="@{/services}" th:text="#{label.services}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER')" th:href="@{/contracts}"
+       th:text="#{label.contracts}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER' )" th:href="@{/households}"
+       th:text="#{label.households}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER' )" th:href="@{/owners}"
+       th:text="#{label.owners}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER' )" th:href="@{/address}"
+       th:text="#{label.address}"></a>
+    <!--    <a th:href="@{/country}" th:text="#{label.country}"></a>-->
     <a th:href="@{/about}" th:text="#{label.about}"></a>
-    <a sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER', 'SUPERUSER' )" th:href="@{/users}" th:text="#{label.users}" ></a>
-    <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right; margin-left: 4vw;" th:text="#{label.login}"></a>
-    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER')" style="text-align: right; margin-left: 4vw;"
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'MANAGER', 'SUPERUSER' )" th:href="@{/users}"
+       th:text="#{label.users}"></a>
+    <a sec:authorize="anonymous" th:href="@{/login}" style="text-align: right; margin-left: 4vw;"
+       th:text="#{label.login}"></a>
+    <a sec:authorize="hasAnyAuthority('ADMIN', 'ROLE_USER', 'EDITOR', 'MANAGER', 'SUPERUSER')"
+       style="text-align: right; margin-left: 4vw;"
        th:href="@{/logout}" th:text="#{label.logout}"></a>
 
     <select style="margin-left: 4vw; width:60px;" id="locales" onchange="showDropInfo()">
@@ -46,13 +53,11 @@
         <option value="en" th:text="#{lang.en}"></option>
         <option value="hr" th:text="#{lang.hr}"></option>
     </select>
-
-<!--    <div style="width: 60px; padding: 0px;" th:insert="/fragments/language :: language"></div>-->
 </div>
-<div class="center">
-    <img th:src="@{/styles/energy.png}" class="starlarge" alt="star">
-    <h1>ENERGENT</h1>
-    <h3><a th:text="#{label.homepagetext}"/></h3>
-</div>
+    <div class="center">
+        <img th:src="@{/styles/energy.png}" class="starlarge" alt="star">
+        <h1>ENERGENT</h1>
+        <h3><a th:text="#{label.homepagetext}"/></h3>
+    </div>
 </body>
 </html>

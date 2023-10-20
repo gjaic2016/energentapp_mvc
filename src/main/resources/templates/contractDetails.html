@@ -10,10 +10,10 @@
     <button onclick="goBack()" th:text="#{button.back}"></button>
     <h1 th:text="#{label.contractDetails}"></h1>
     <table>
-        <tr>
-            <td th:text="#{label.id} + ': '"></td>
-            <td th:text="${contract.id}"/>
-        </tr>
+<!--        <tr>-->
+<!--            <td th:text="#{label.id} + ': '"></td>-->
+<!--            <td th:text="${contract.id}"/>-->
+<!--        </tr>-->
         <tr>
             <td th:text="#{label.contractType} + ': '"></td>
             <td th:text="${#messages.msg(contract.getContractType().name)}"/>

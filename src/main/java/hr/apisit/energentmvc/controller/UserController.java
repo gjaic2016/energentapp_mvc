@@ -72,11 +72,15 @@ public class UserController {
 
     @PostMapping("/update")
     public String updateUser(@ModelAttribute User user) {
-        //TODO provjera ako pocinje sa "$2a$10" ne koristit encoder, ako ne pocinje onda koristit
-//        String encodedPassword = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
 
-        userService.saveUser(user);
+        if (user.getPassword().startsWith("$2a$10")) {
+            userService.saveUser(user);
+        } else {
+            String encodedPassword = passwordEncoder.encode(user.getPassword());
+            user.setPassword(encodedPassword);
+            userService.saveUser(user);
+        }
+
         return "redirect:/users";
     }
 

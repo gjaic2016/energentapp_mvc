@@ -37,7 +37,7 @@
             <select th:field="*{serviceSP}">
                 <option th:each="service : ${servicesps}"
                         th:value="${service.id}"
-                        th:text="${#messages.msg(service.serviceType.naziv)}">
+                        th:text="${#messages.msg(service.serviceType.naziv)}  + ' - ' + ${service.serviceProvider.naziv}">
                 </option>
             </select>
             </br>

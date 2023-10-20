@@ -23,7 +23,7 @@
     <table id="contractTable" class="display" style="width:100%">
         <thead>
             <tr>
-                <th th:text="#{label.id}"></th>
+<!--                <th th:text="#{label.id}"></th>-->
                 <th th:text="#{label.contractType}"></th>
                 <th th:text="#{label.households}"></th>
                 <th th:text="#{label.service}"></th>
@@ -33,7 +33,7 @@
         </thead>
         <tbody>
         <tr th:each="contract : ${contracts}">
-            <td th:text="${contract.id}"></td>
+<!--            <td th:text="${contract.id}"></td>-->
             <td th:text="${#messages.msg(contract.getContractType().name)}"></td>
             <td th:text="${contract.getHousehold().adresa}"></td>
             <td th:text="${#messages.msg(contract.getServiceSP().serviceType.naziv)}"></td>
