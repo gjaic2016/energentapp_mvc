@@ -12,9 +12,7 @@
         <button onclick="goBack()" th:text="#{button.back}"></button>
         <form th:action="@{/users/update}" th:object="${user}" method="post">
             <div>
-                <p th:text="#{label.id} + ': '"></p>
-                </br>
-                <input type="text" th:field="*{id}" th:value="*{id}" readonly/>
+                <p th:text="#{label.id} + ': '"></p><input type="text" th:field="*{id}" th:value="*{id}" readonly/>
 
                 </br>
                 <p th:text="#{label.enterNewUsername} + ': '"></p>
@@ -22,10 +20,9 @@
                 <input type="text" th:field="*{username}" th:value="*{username}"/>
                 </br>
 
-                <p th:text="#{label.enterNewPassword} + ': '"></p>
+<!--                <p th:text="#{label.enterNewPassword} + ': '"></p>-->
                 </br>
-                <input type="text" id="password" name="password" th:field="*{password}"/>
-<!--                type="password"  -->
+                <input type="text" id="password" name="password" th:field="*{password}" hidden/>
 
                 </br>
                 <p th:text="#{label.setnewrole}"></p>

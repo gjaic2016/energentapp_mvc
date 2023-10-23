@@ -20,7 +20,7 @@
         </tr>
         <tr>
             <td th:text="#{label.dateOfBirth} + ':'"></td>
-            <td th:text="${owner.datumRodenja}"/>
+            <td th:text="${#temporals.format(owner.datumRodenja, 'dd.MM.yyyy.')}"/>
         </tr>
         <tr>
             <td th:text="#{label.pinnumber} + ':'"></td>

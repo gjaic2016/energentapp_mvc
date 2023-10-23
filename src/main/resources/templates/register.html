@@ -16,15 +16,13 @@
         <p th:if="${errorMessage}">
             <a th:text="${errorMessage}"></a>
         </p>
-                <!--      Username:-->
                 <a th:text="#{label.userName}"/>
+                </br>
                 <input type="text" th:field="*{username}"/>
                 </br>
-
-                <!--      Password:-->
                 <a th:text="#{label.password}"/>
                 </br>
-                <input type="text" th:field="*{password}"/>
+                <input type="password" th:field="*{password}"/>
 
                 <button type="submit" th:text="#{button.register}"></button>
             </div>

@@ -33,11 +33,11 @@
         </tr>
         <tr>
             <td th:text="#{label.startdate} + ': '"></td>
-            <td th:text="${contract.getStart_date()}"/>
+            <td th:text="${#temporals.format(contract.start_date, 'dd.MM.yyyy.')}"/>
         </tr>
         <tr>
             <td th:text="#{label.enddate} + ': '"></td>
-            <td th:text="${contract.getEnddate()}"/>
+            <td th:text="${#temporals.format(contract.enddate, 'dd.MM.yyyy.')}"/>
         </tr>
         <tr>
             <td th:text="#{label.status} + ': '"></td>

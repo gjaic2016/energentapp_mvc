@@ -9,6 +9,7 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Table(name = "USER_TABLE")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,8 +20,10 @@ public class User {
     private Integer id;
 
 //    @Column(nullable = false, unique = true)
+//    @Column(name = "USERNAME")
     private String username;
 
+//    @Column(name = "PASSWORD")
     private String password;
 
     @ManyToMany(fetch= FetchType.EAGER)
