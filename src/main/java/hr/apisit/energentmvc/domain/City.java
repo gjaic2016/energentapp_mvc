@@ -1,12 +1,10 @@
 package hr.apisit.energentmvc.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
 
-//@Data
 @Getter
 @Setter
 @Entity
@@ -34,15 +32,7 @@ public class City {
 //    @JsonBackReference
 //    private Country country;
 
-//    @JsonBackReference
     @OneToMany(mappedBy = "city")
     private List<Address> address;
-
-//    public City(Integer id, String city_zip, String city_name, Country country) {
-//        this.id = id;
-//        this.city_zip = city_zip;
-//        this.city_name = city_name;
-//        this.country = country;
-//    }
 
 }

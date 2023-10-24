@@ -6,7 +6,6 @@ import lombok.*;
 
 import java.util.List;
 
-//@Data
 @Getter
 @Setter
 @Entity
@@ -24,7 +23,6 @@ public class Country {
 
 //    @JsonIgnoreProperties("country")
 //    @JsonIgnore
-
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     @JsonBackReference
     private List<City> cities;

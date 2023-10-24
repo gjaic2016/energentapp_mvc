@@ -11,9 +11,4 @@ public interface RoleService {
 
     Optional<Role> getRoleById(Integer id);
 
-//    void saveUser(Role newRole);
-
-//    Role updateRole(Role updatedRole, Integer id);
-
-//    void deleteRole(Integer id);
 }

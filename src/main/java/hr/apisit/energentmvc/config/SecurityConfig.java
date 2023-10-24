@@ -62,8 +62,6 @@ public class SecurityConfig {
                 .requestMatchers(requestMatcherBuilder.pattern("/home")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/home/**")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/register/**")).permitAll()
-//                .requestMatchers(requestMatcherBuilder.pattern("/.*lang=.*")).permitAll()
-//                .requestMatchers(requestMatcherBuilder.pattern("/*")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern("/actuator/**")).permitAll()
                 .requestMatchers(requestMatcherBuilder.pattern(HttpMethod.DELETE, "/users/**" )).hasAuthority("ADMIN")
         ).formLogin((form) -> form
@@ -73,7 +71,6 @@ public class SecurityConfig {
                 .permitAll()
                 .logoutSuccessUrl("/")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//                .deleteCookies("JSESSIONID")
         );
         return http.build();
     }

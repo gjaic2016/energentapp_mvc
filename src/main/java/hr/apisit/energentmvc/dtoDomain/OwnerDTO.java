@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,12 +12,8 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 public class OwnerDTO {
-
-//    @Valid
-
-//    private Integer id;
 
     @NotBlank(message = "First name must not be empty.")
     @NotNull
@@ -33,10 +30,4 @@ public class OwnerDTO {
     @Pattern(message = "JMBAG must have 11 digits.", regexp="[\\d]{11}")
     private String oib;
 
-    public OwnerDTO(String ime, String prezime, LocalDate datumRodenja, String oib) {
-        this.ime = ime;
-        this.prezime = prezime;
-        this.datumRodenja = datumRodenja;
-        this.oib = oib;
-    }
 }

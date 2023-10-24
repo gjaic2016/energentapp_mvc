@@ -17,6 +17,4 @@ public interface HouseholdService {
 
     void deleteHousehold(Integer id);
 
-//    void deleteHousehold(Household household);
-
 }

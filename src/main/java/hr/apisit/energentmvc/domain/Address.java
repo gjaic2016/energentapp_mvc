@@ -3,7 +3,6 @@ package hr.apisit.energentmvc.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-//@Data
 @Getter
 @Setter
 @Entity
@@ -22,9 +21,5 @@ public class Address {
     @ManyToOne
     @JoinColumn(name = "city_id",referencedColumnName = "id")
     private City city;
-
-//    @OneToOne(mappedBy = "adresa")
-//    @JsonIgnore
-//    private ServiceProvider provider;
 
 }

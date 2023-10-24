@@ -17,5 +17,4 @@ public interface OwnerService {
 
     void deleteOwner(Integer id);
 
-//    void deleteOwner(Owner owner);
 }

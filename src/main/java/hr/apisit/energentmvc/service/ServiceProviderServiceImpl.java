@@ -46,7 +46,7 @@ public class ServiceProviderServiceImpl implements ServiceProviderService{
             return newUpdatedServiceProvider;
         }
         else {
-            throw new EntityNotFoundException("There is no Seat object for ID = '" + originalServiceProviderId + "'");
+            throw new EntityNotFoundException("There is no provider object for ID = '" + originalServiceProviderId + "'");
         }
 
     }

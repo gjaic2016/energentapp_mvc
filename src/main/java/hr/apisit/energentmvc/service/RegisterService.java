@@ -8,8 +8,6 @@ import java.util.Optional;
 public interface RegisterService {
 
     List<User> getAllUsers();
-//
-//    Optional<User> getUserById(Integer id);
 
     void saveRegisterUser(User newUser);
 

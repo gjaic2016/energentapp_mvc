@@ -42,7 +42,7 @@ public class CountryServiceImpl implements CountryService{
             return newUpdatedCountry;
         }
         else {
-            throw new EntityNotFoundException("There is no Seat object for ID = '" + originalCountryId + "'");
+            throw new EntityNotFoundException("There is no country object for ID = '" + originalCountryId + "'");
         }
     }
 

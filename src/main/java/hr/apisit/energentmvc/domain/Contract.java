@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-//@Data
 @Getter
 @Setter
 @Entity
@@ -30,7 +29,6 @@ public class Contract {
     @ManyToOne
     @JoinColumn(name = "SERVICE_ID")
     private ServiceSP serviceSP;
-
 
     @Column(name="start_date")
     private LocalDate start_date;

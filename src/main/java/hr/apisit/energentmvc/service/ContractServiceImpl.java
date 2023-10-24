@@ -49,7 +49,7 @@ public class ContractServiceImpl implements ContractService {
 
             return newUpdatedContract;
         } else {
-            throw new EntityNotFoundException("There is no Owner object for ID = '" + originalContractId + "'");
+            throw new EntityNotFoundException("There is no contract object for ID = '" + originalContractId + "'");
         }
 
     }

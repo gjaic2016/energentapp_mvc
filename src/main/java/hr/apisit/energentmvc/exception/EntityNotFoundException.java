@@ -7,7 +7,4 @@ public class EntityNotFoundException extends DataAccessException {
         super(msg);
     }
 
-    public EntityNotFoundException(String msg, Throwable cause) {
-        super(msg, cause);
-    }
 }

@@ -24,7 +24,6 @@ public class AddressServiceImpl implements AddressService{
     @Override
     public Optional<Address> getAddressById(Integer id) {
         return addressRepositoryJpa.findById(id);
-//        return Optional.empty();
     }
 
     @Override
